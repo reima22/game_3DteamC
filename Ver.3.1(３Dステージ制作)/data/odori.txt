@@ -1,0 +1,649 @@
+#==============================================================================
+#
+# 『モデルビューワ』スクリプトファイル [model.txt]
+# Author : AKIRA TANAKA
+#
+#==============================================================================
+SCRIPT			# この行は絶対消さないこと！
+
+#------------------------------------------------------------------------------
+# テクスチャ数
+#------------------------------------------------------------------------------
+NUM_TEXTURE = 14
+
+#------------------------------------------------------------------------------
+# テクスチャファイル名
+#------------------------------------------------------------------------------
+TEXTURE_FILENAME = data/TEXTURE/sky000.jpg			# [0]空テクスチャ
+TEXTURE_FILENAME = data/TEXTURE/mountain000.png		# [1]山テクスチャ
+TEXTURE_FILENAME = data/TEXTURE/field000.jpg		# [2]地面テクスチャ
+TEXTURE_FILENAME = data/TEXTURE/field001.jpg		# [3]地面テクスチャ
+TEXTURE_FILENAME = data/TEXTURE/wall100.jpg			# [4]壁テクスチャ
+TEXTURE_FILENAME = data/TEXTURE/bg_wood00.jpg		# [5]壁テクスチャ
+TEXTURE_FILENAME = data/TEXTURE/road000.jpg			# [6]道路１（横断歩道左側）
+TEXTURE_FILENAME = data/TEXTURE/road001.jpg			# [7]道路２（横断歩道右側）
+TEXTURE_FILENAME = data/TEXTURE/road002.jpg			# [8]道路３（センターライン左側）
+TEXTURE_FILENAME = data/TEXTURE/road003.jpg			# [9]道路４（センターライン右側）
+TEXTURE_FILENAME = data/TEXTURE/road004.jpg			# [10]道路５（横断歩道中間）
+TEXTURE_FILENAME = data/TEXTURE/road005.jpg			# [11]道路６（無地）
+TEXTURE_FILENAME = data/TEXTURE/road_walk00.jpg		# [12]歩道
+TEXTURE_FILENAME = data/TEXTURE/road_walk01.jpg		# [13]歩道（公園内）
+
+#------------------------------------------------------------------------------
+# モデル数
+#------------------------------------------------------------------------------
+NUM_MODEL = 23
+
+#------------------------------------------------------------------------------
+# モデルファイル名
+#------------------------------------------------------------------------------
+MODEL_FILENAME = data/MODEL/tower000.x				# [0]テレビ塔
+MODEL_FILENAME = data/MODEL/stone001.x				# [1]岩(中)
+MODEL_FILENAME = data/MODEL/stone002.x				# [2]岩(大)
+MODEL_FILENAME = data/MODEL/wall000.x				# [3]岩壁(小)
+MODEL_FILENAME = data/MODEL/wall001.x				# [4]岩壁(中)
+MODEL_FILENAME = data/MODEL/wall002.x				# [5]岩壁(大)
+MODEL_FILENAME = data/MODEL/wood00.x				# [6]木
+MODEL_FILENAME = data/MODEL/wood01.x				# [7]木(中)
+MODEL_FILENAME = data/MODEL/wood02.x				# [8]木(大)
+MODEL_FILENAME = data/MODEL/weed00.x				# [9]草
+MODEL_FILENAME = data/MODEL/debris101.x				# [10]板ガレキ(中)
+MODEL_FILENAME = data/MODEL/debris102.x				# [11]板ガレキ(大)
+MODEL_FILENAME = data/MODEL/pillar000.x				# [12]柱(小)
+MODEL_FILENAME = data/MODEL/pillar001.x				# [13]柱(中)
+MODEL_FILENAME = data/MODEL/pillar002.x				# [14]柱(大)
+MODEL_FILENAME = data/MODEL/treasurebox00.x			# [15]宝箱(灰)
+MODEL_FILENAME = data/MODEL/treasurebox01.x			# [16]宝箱(茶)
+MODEL_FILENAME = data/MODEL/bas.x			        # [17]バス(三浦)
+MODEL_FILENAME = data/MODEL/噴水.x			        # [18]
+MODEL_FILENAME = data/MODEL/バス停.x			    # [19]
+MODEL_FILENAME = data/MODEL/ビル.x			        # [20]
+MODEL_FILENAME = data/MODEL/北洋銀行.x				# [21]
+MODEL_FILENAME = data/MODEL/丸井今井.x				# [22]
+
+#------------------------------------------------------------------------------
+# カメラ情報
+#------------------------------------------------------------------------------
+CAMERASET
+	POS = 0.0 700.0 -1150.0			# 視点
+	REF = 0.0 0.0 0.0				# 注視点
+END_CAMERASET
+
+#------------------------------------------------------------------------------
+# ライト情報
+#------------------------------------------------------------------------------
+LIGHTSET
+	DIRECTION = 0.22 -0.87 0.44		# 方向
+	DIFFUSE = 1.0 1.0 1.0			# 拡散光
+END_LIGHTSET
+
+LIGHTSET
+	DIRECTION = -0.18 0.88 -0.44	# 方向
+	DIFFUSE = 0.65 0.65 0.65		# 拡散光
+END_LIGHTSET
+
+LIGHTSET
+	DIRECTION = 0.89 -0.11 0.44		# 方向
+	DIFFUSE = 0.15 0.15 0.15		# 拡散光
+END_LIGHTSET
+
+#------------------------------------------------------------------------------
+# 空情報
+#------------------------------------------------------------------------------
+SKYSET
+	TEXTYPE = 0
+	MOVE = 0.00002
+END_SKYSET
+
+#------------------------------------------------------------------------------
+# 山情報
+#------------------------------------------------------------------------------
+MOUNTAINSET
+	TEXTYPE = 1
+END_MOUNTAINSET
+
+#------------------------------------------------------------------------------
+# 地面情報
+#------------------------------------------------------------------------------
+#------------------
+# 草地
+#------------------
+FIELDSET
+	TEXTYPE = 2
+	POS = 0 0 240
+	ROT = 0 0 0
+	BLOCK = 10 30
+	SIZE = 80 80
+END_FIELDSET
+
+#------------------
+# 道路
+#------------------
+# 左側
+FIELDSET
+	TEXTYPE = 6
+	POS = -600 0 240
+	ROT = 0 0 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = -440 0 240
+	ROT = 0 0 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = -600 0 -400
+	ROT = 0 0 0
+	BLOCK = 1 7
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = -440 0 -400
+	ROT = 0 0 0
+	BLOCK = 1 7
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 6
+	POS = -440 0 720
+	ROT = 0 180 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = -600 0 720
+	ROT = 0 180 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = -600 0 1120
+	ROT = 0 0 0
+	BLOCK = 1 4
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = -440 0 1120
+	ROT = 0 0 0
+	BLOCK = 1 4
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 11
+	POS = -520 0 480
+	ROT = 0 0 0
+	BLOCK = 2 2
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 6
+	POS = -760 0 560
+	ROT = 0 90 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = -760 0 400
+	ROT = 0 90 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = -1000 0 560
+	ROT = 0 90 0
+	BLOCK = 1 2
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = -1000 0 400
+	ROT = 0 90 0
+	BLOCK = 1 2
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 11
+	POS = -940 0 1060
+	ROT = 0 0 0
+	BLOCK = 11 19
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 11
+	POS = -940 0 -340
+	ROT = 0 0 0
+	BLOCK = 11 31
+	SIZE = 40 40
+END_FIELDSET
+
+# 右側
+FIELDSET
+	TEXTYPE = 6
+	POS = 440 0 240
+	ROT = 0 0 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = 600 0 240
+	ROT = 0 0 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = 440 0 -400
+	ROT = 0 0 0
+	BLOCK = 1 7
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = 600 0 -400
+	ROT = 0 0 0
+	BLOCK = 1 7
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 6
+	POS = 600 0 720
+	ROT = 0 180 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = 440 0 720
+	ROT = 0 180 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = 440 0 1120
+	ROT = 0 0 0
+	BLOCK = 1 4
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = 600 0 1120
+	ROT = 0 0 0
+	BLOCK = 1 4
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 11
+	POS = 520 0 480
+	ROT = 0 0 0
+	BLOCK = 2 2
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 6
+	POS = 760 0 400
+	ROT = 0 270 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = 760 0 560
+	ROT = 0 270 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = 1000 0 560
+	ROT = 0 90 0
+	BLOCK = 1 2
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = 1000 0 400
+	ROT = 0 90 0
+	BLOCK = 1 2
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 11
+	POS = 940 0 1060
+	ROT = 0 0 0
+	BLOCK = 11 19
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 11
+	POS = 940 0 -340
+	ROT = 0 0 0
+	BLOCK = 11 31
+	SIZE = 40 40
+END_FIELDSET
+
+
+# 中央
+FIELDSET
+	TEXTYPE = 6
+	POS = -280 0 400
+	ROT = 0 270 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = -280 0 560
+	ROT = 0 270 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 6
+	POS = 280 0 560
+	ROT = 0 90 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 7
+	POS = 280 0 400
+	ROT = 0 90 0
+	BLOCK = 1 1
+	SIZE = 160 160
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 8
+	POS = 0 0 560
+	ROT = 0 90 0
+	BLOCK = 1 2
+	SIZE = 160 200
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 9
+	POS = 0 0 400
+	ROT = 0 90 0
+	BLOCK = 1 2
+	SIZE = 160 200
+END_FIELDSET
+
+#------------------
+# 歩道
+#------------------
+# 中央
+FIELDSET
+	TEXTYPE = 12
+	POS = 0 0 300
+	ROT = 0 0 0
+	BLOCK = 16 1
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = 0 0 660
+	ROT = 0 0 0
+	BLOCK = 16 1
+	SIZE = 40 40
+END_FIELDSET
+
+# 左側
+FIELDSET
+	TEXTYPE = 12
+	POS = -340 0 -320
+	ROT = 0 0 0
+	BLOCK = 1 32
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = -700 0 -320
+	ROT = 0 0 0
+	BLOCK = 1 32
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = -340 0 1040
+	ROT = 0 0 0
+	BLOCK = 1 20
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = -700 0 1040
+	ROT = 0 0 0
+	BLOCK = 1 20
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = -940 0 300
+	ROT = 0 0 0
+	BLOCK = 11 1
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = -940 0 660
+	ROT = 0 0 0
+	BLOCK = 11 1
+	SIZE = 40 40
+END_FIELDSET
+
+# 右側
+FIELDSET
+	TEXTYPE = 12
+	POS = 340 0 -320
+	ROT = 0 0 0
+	BLOCK = 1 32
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = 700 0 -320
+	ROT = 0 0 0
+	BLOCK = 1 32
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = 340 0 1040
+	ROT = 0 0 0
+	BLOCK = 1 20
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = 700 0 1040
+	ROT = 0 0 0
+	BLOCK = 1 20
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = 940 0 300
+	ROT = 0 0 0
+	BLOCK = 11 1
+	SIZE = 40 40
+END_FIELDSET
+
+FIELDSET
+	TEXTYPE = 12
+	POS = 940 0 660
+	ROT = 0 0 0
+	BLOCK = 11 1
+	SIZE = 40 40
+END_FIELDSET
+
+#------------------------------------------------------------------------------
+# 壁情報
+#------------------------------------------------------------------------------
+WALLSET
+	TEXTYPE = 4
+	POS = 0 -80 640
+	ROT = 0 180 0
+	BLOCK = 16 1
+	SIZE = 80 80
+END_WALLSET
+
+WALLSET
+	TEXTYPE = 4
+	POS = 640 -80 0
+	ROT = 0 270 0
+	BLOCK = 16 1
+	SIZE = 80 80
+END_WALLSET
+
+WALLSET
+	TEXTYPE = 4
+	POS = 0 -80 -640
+	ROT = 0 0 0
+	BLOCK = 16 1
+	SIZE = 80 80
+END_WALLSET
+
+WALLSET
+	TEXTYPE = 4
+	POS = -640 -80 0
+	ROT = 0 90 0
+	BLOCK = 16 1
+	SIZE = 80 80
+END_WALLSET
+
+#------------------------------------------------------------------------------
+# モデル配置情報
+#------------------------------------------------------------------------------
+#------------------
+# テレビ塔
+#------------------
+MODELSET
+	TYPE = 0
+	POS = 0 0 1000
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
+# バス
+#------------------
+MODELSET
+	TYPE = 17
+	POS = -440 -40 -500
+	ROT = 0 0 0
+	SHADOW = 0
+END_MODELSET
+
+#------------------
+# 噴水
+#------------------
+MODELSET
+	TYPE = 18
+	POS = 0 0 0
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
+# バス停
+#------------------
+MODELSET
+	TYPE = 19
+	POS = -340 0 -700
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
+# ビル
+#------------------
+MODELSET
+	TYPE = 20
+	POS = -930 0 900
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 20
+	POS = 930 0 900
+	ROT = 0 90 0
+END_MODELSET
+
+#------------------
+# 北洋銀行
+#------------------
+MODELSET
+	TYPE = 21
+	POS = -960 20 -60
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
+# 丸井今井
+#------------------
+MODELSET
+	TYPE = 22
+	POS = 960 0 0
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
+# プレイヤー
+#------------------
+PLAYERSET
+	MOTION_FILENAME = data/player.txt
+	POS = 0 0 -200
+	ROT = 0 0 0
+END_PLAYERSET
+
+END_SCRIPT		# この行は絶対消さないこと！
