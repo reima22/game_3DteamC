@@ -14,22 +14,22 @@ NUM_MODEL = 16
 #------------------------------------------------------------------------------
 # モデルファイル名
 #------------------------------------------------------------------------------
-MODEL_FILENAME = data/MODEL/bodymiura.x		# [0]体
-MODEL_FILENAME = data/MODEL/atamamiura.x	# [1]頭
-MODEL_FILENAME = data/MODEL/armmiura.x		# [2]右腕
-MODEL_FILENAME = data/MODEL/handmiura.x		# [3]右手
-MODEL_FILENAME = data/MODEL/udemiura.x		# [4]左腕
-MODEL_FILENAME = data/MODEL/handRmiura.x	# [5]左手
-MODEL_FILENAME = data/MODEL/legmiura.x		# [6]右腿
-MODEL_FILENAME = data/MODEL/footmiuraL.x	# [7]右足
-MODEL_FILENAME = data/MODEL/legmiura.x	    # [8]左腿
-MODEL_FILENAME = data/MODEL/footmiura.x	    # [9]左足
-MODEL_FILENAME = data/MODEL/arm2miura.x		# [10]右肘
-MODEL_FILENAME = data/MODEL/arm3miura.x		# [11]左肘
-MODEL_FILENAME = data/MODEL/leg2miura.x		# [12]右膝
-MODEL_FILENAME = data/MODEL/leg2miura.x	    # [13]左膝
-MODEL_FILENAME = data/MODEL/kubimiura.x	    # [14]首
-MODEL_FILENAME = data/MODEL/body2miura.x	# [15]腰
+MODEL_FILENAME = data/MODEL/miura/bodymiura.x		# [0]体
+MODEL_FILENAME = data/MODEL/miura/atamamiura.x	# [1]頭
+MODEL_FILENAME = data/MODEL/miura/armmiura.x		# [2]右腕
+MODEL_FILENAME = data/MODEL/miura/handmiura.x		# [3]右手
+MODEL_FILENAME = data/MODEL/miura/udemiura.x		# [4]左腕
+MODEL_FILENAME = data/MODEL/miura/handRmiura.x	# [5]左手
+MODEL_FILENAME = data/MODEL/miura/legmiura.x		# [6]右腿
+MODEL_FILENAME = data/MODEL/miura/footmiuraL.x	# [7]右足
+MODEL_FILENAME = data/MODEL/miura/legmiura.x	    # [8]左腿
+MODEL_FILENAME = data/MODEL/miura/footmiura.x	    # [9]左足
+MODEL_FILENAME = data/MODEL/miura/arm2miura.x		# [10]右肘
+MODEL_FILENAME = data/MODEL/miura/arm3miura.x		# [11]左肘
+MODEL_FILENAME = data/MODEL/miura/leg2miura.x		# [12]右膝
+MODEL_FILENAME = data/MODEL/miura/leg2miura.x	    # [13]左膝
+MODEL_FILENAME = data/MODEL/miura/kubimiura.x	    # [14]首
+MODEL_FILENAME = data/MODEL/miura/body2miura.x	# [15]腰
 
 #------------------------------------------------------------------------------
 # キャラクター情報
