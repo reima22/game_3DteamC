@@ -156,6 +156,10 @@ void DrawBillboard(void)
 	// デバイスの取得
 	pDevice = GetDevice();
 
+	// Zテストの更新
+	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
+	pDevice->SetRenderState(D3DRS_ZWRITEENABLE,FALSE);
+
 	// ワールドマトリックスの初期化
 	D3DXMatrixIdentity(&g_mtxWorldBillboard);
 
@@ -189,4 +193,8 @@ void DrawBillboard(void)
 		D3DPT_TRIANGLESTRIP,	// プリミティブの種類
 		0,						// 描画を開始する頂点インデックス
 		2);						// 描画するプリミティブ数
+
+	// 元に戻す
+	pDevice->SetRenderState(D3DRS_ZFUNC,D3DCMP_LESSEQUAL);
+	pDevice->SetRenderState(D3DRS_ZWRITEENABLE,TRUE);
 }

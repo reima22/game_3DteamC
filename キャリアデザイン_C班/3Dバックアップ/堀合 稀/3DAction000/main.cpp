@@ -347,11 +347,6 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// ƒƒbƒVƒ…•Ç‚Ì‰Šú‰»ˆ—
 	InitMeshwall();
 
-	SetWall(D3DXVECTOR3(0.0f, -5.0f, 100.0f), D3DXVECTOR3(0.0f, 0.0f, 0.0f), 10.0f, 5.0f);
-	//SetWall(D3DXVECTOR3(0.0f, 0.0f, 100.0f), D3DXVECTOR3(0.0f, D3DX_PI / 2, 0.0f), 100.0f, 50.0f);
-	//SetWall(D3DXVECTOR3(0.0f, 0.0f, 100.0f), D3DXVECTOR3(0.0f, D3DX_PI / -2, 0.0f), 100.0f, 50.0f);
-	//SetWall(D3DXVECTOR3(0.0f, 0.0f, 100.0f), D3DXVECTOR3(0.0f, D3DX_PI, 0.0f), 100.0f, 50.0f);
-
 	// ƒ‚ƒfƒ‹‚Ì‰Šú‰»ˆ—
 	InitModel();
 

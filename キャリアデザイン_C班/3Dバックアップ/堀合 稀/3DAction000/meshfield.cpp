@@ -73,25 +73,36 @@ HRESULT InitMeshfield(void)
 	// 頂点バッファをロックし、頂点情報へのポインタを取得
 	g_pVtxBuffMeshfield->Lock(0, 0, (void**)&pVtx, 0);
 
-	// ポリゴンの各頂点座標
-	//for (int nCnt = 0; nCnt < DEPTH + 1; nCnt++)
-	//{// 奥行軸
-	//	for (int nCntA = 0; nCntA < WIDTH + 1; nCntA++, nCount++)
-	//	{// 横軸
-	//		pVtx[nCount].pos = D3DXVECTOR3(-g_fWidth + ((float)nCntA * g_fWidth), 0.0f, g_fDepth - ((float)nCnt * g_fDepth));
-	//	}
-	//}
+	for (int nCnt = 0; nCnt < DEPTH + 1; nCnt++)
+	{// 奥行軸
+		for (int nCntA = 0; nCntA < WIDTH + 1; nCntA++, nCount++)
+		{// 横軸
+			// ポリゴンの各頂点座標
+			pVtx[0].pos = D3DXVECTOR3(-g_fWidth + ((float)nCntA * g_fWidth), 0.0f, g_fDepth - ((float)nCnt * g_fDepth));
+
+			// 法線ベクトルの設定
+			pVtx[0].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+
+			// 各頂点カラーの設定
+			pVtx[0].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+
+			// テクスチャ頂点情報の設定
+			pVtx[0].tex = D3DXVECTOR2(1.0f * nCntA, 1.0f * nCnt);
+
+			pVtx++;
+		}
+	}
 
 	// ポリゴンの各頂点座標
-	pVtx[0].pos = D3DXVECTOR3(-100.0f, 0.0f, 100.0f);
-	pVtx[1].pos = D3DXVECTOR3(0.0f, 0.0f, 100.0f);
-	pVtx[2].pos = D3DXVECTOR3(100.0f, 0.0f, 100.0f);
-	pVtx[3].pos = D3DXVECTOR3(-100.0f, 0.0f, 0.0f);
-	pVtx[4].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	pVtx[5].pos = D3DXVECTOR3(100.0f, 0.0f, 0.0f);
-	pVtx[6].pos = D3DXVECTOR3(-100.0f, 0.0f, -100.0f);
-	pVtx[7].pos = D3DXVECTOR3(0.0f, 0.0f, -100.0f);
-	pVtx[8].pos = D3DXVECTOR3(100.0f, 0.0f, -100.0f);
+	//pVtx[0].pos = D3DXVECTOR3(-100.0f, 0.0f, 100.0f);
+	//pVtx[1].pos = D3DXVECTOR3(0.0f, 0.0f, 100.0f);
+	//pVtx[2].pos = D3DXVECTOR3(100.0f, 0.0f, 100.0f);
+	//pVtx[3].pos = D3DXVECTOR3(-100.0f, 0.0f, 0.0f);
+	//pVtx[4].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	//pVtx[5].pos = D3DXVECTOR3(100.0f, 0.0f, 0.0f);
+	//pVtx[6].pos = D3DXVECTOR3(-100.0f, 0.0f, -100.0f);
+	//pVtx[7].pos = D3DXVECTOR3(0.0f, 0.0f, -100.0f);
+	//pVtx[8].pos = D3DXVECTOR3(100.0f, 0.0f, -100.0f);
 	//pVtx[9].pos = D3DXVECTOR3(g_posMeshfield.x - 100.0f, 0.0f, 0.0f);
 	//pVtx[0].pos = D3DXVECTOR3(g_posMeshfield.x - 100.0f, 0.0f, 0.0f);
 	//pVtx[1].pos = D3DXVECTOR3(g_posMeshfield.x - 100.0f, 0.0f, g_posMeshfield.z + 100.0f);
@@ -109,15 +120,15 @@ HRESULT InitMeshfield(void)
 	//pVtx[13].pos = D3DXVECTOR3(g_posMeshfield.x + 100.0f, 0.0f, 0.0f);
 
 	// 法線ベクトルの設定
-	pVtx[0].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[1].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[2].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[3].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[4].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[5].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[6].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[7].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	pVtx[8].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[0].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[1].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[2].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[3].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[4].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[5].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[6].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[7].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
+	//pVtx[8].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	//pVtx[9].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	//pVtx[10].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 	//pVtx[11].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
@@ -125,15 +136,15 @@ HRESULT InitMeshfield(void)
 	//pVtx[13].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
 
 	// 各頂点カラーの設定
-	pVtx[0].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[1].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[2].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[3].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[4].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[5].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[6].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[7].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-	pVtx[8].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[0].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[1].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[2].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[3].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[4].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[5].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[6].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[7].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	//pVtx[8].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	//pVtx[9].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	//pVtx[10].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	//pVtx[11].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
@@ -141,15 +152,15 @@ HRESULT InitMeshfield(void)
 	//pVtx[13].col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 
 	// テクスチャ頂点情報の設定
-	pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
-	pVtx[1].tex = D3DXVECTOR2(1.0f, 0.0f);
-	pVtx[2].tex = D3DXVECTOR2(2.0f, 0.0f);
-	pVtx[3].tex = D3DXVECTOR2(0.0f, 1.0f);
-	pVtx[4].tex = D3DXVECTOR2(1.0f, 1.0f);
-	pVtx[5].tex = D3DXVECTOR2(2.0f, 1.0f);
-	pVtx[6].tex = D3DXVECTOR2(0.0f, 2.0f);
-	pVtx[7].tex = D3DXVECTOR2(1.0f, 2.0f);
-	pVtx[8].tex = D3DXVECTOR2(2.0f, 2.0f);
+	//pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
+	//pVtx[1].tex = D3DXVECTOR2(1.0f, 0.0f);
+	//pVtx[2].tex = D3DXVECTOR2(2.0f, 0.0f);
+	//pVtx[3].tex = D3DXVECTOR2(0.0f, 1.0f);
+	//pVtx[4].tex = D3DXVECTOR2(1.0f, 1.0f);
+	//pVtx[5].tex = D3DXVECTOR2(2.0f, 1.0f);
+	//pVtx[6].tex = D3DXVECTOR2(0.0f, 2.0f);
+	//pVtx[7].tex = D3DXVECTOR2(1.0f, 2.0f);
+	//pVtx[8].tex = D3DXVECTOR2(2.0f, 2.0f);
 	//pVtx[9].tex = D3DXVECTOR2(0.0f, 1.0f);
 	//pVtx[10].tex = D3DXVECTOR2(1.0f, 2.0f);
 	//pVtx[11].tex = D3DXVECTOR2(1.0f, 1.0f);
@@ -179,7 +190,6 @@ HRESULT InitMeshfield(void)
 	//		pIdx[1] = pIdx[0] - (WIDTH + 1);
 	//	}
 	//}
-
 
 	pIdx[0] = 3;
 	pIdx[1] = 0;
@@ -325,7 +335,7 @@ void DrawMeshfield(void)
 		0,
 		9,						// 頂点数
 		0,
-		14);					// プリミティブ数
+		12);					// プリミティブ数
 
 	//pDevice->DrawPrimitive(
 	//	D3DPT_TRIANGLESTRIP,	// プリミティブの種類

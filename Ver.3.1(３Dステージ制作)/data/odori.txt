@@ -36,41 +36,43 @@ TEXTURE_FILENAME = data/TEXTURE/view03.jpg			# [17]景色(右側)
 #------------------------------------------------------------------------------
 # モデル数
 #------------------------------------------------------------------------------
-NUM_MODEL = 24
+NUM_MODEL = 25
 
 #------------------------------------------------------------------------------
 # モデルファイル名
 #------------------------------------------------------------------------------
 MODEL_FILENAME = data/MODEL/tower000.x				# [0]テレビ塔
-MODEL_FILENAME = data/MODEL/stone001.x				# [1]岩(中)
-MODEL_FILENAME = data/MODEL/stone002.x				# [2]岩(大)
-MODEL_FILENAME = data/MODEL/wall000.x				# [3]岩壁(小)
-MODEL_FILENAME = data/MODEL/wall001.x				# [4]岩壁(中)
-MODEL_FILENAME = data/MODEL/wall002.x				# [5]岩壁(大)
+MODEL_FILENAME = data/MODEL/building00.x			# [1]建物１
+MODEL_FILENAME = data/MODEL/building01.x			# [2]建物２
+MODEL_FILENAME = data/MODEL/car00.x					# [3]車１
+MODEL_FILENAME = data/MODEL/car01.x					# [4]車２
+MODEL_FILENAME = data/MODEL/car02.x					# [5]車３
 MODEL_FILENAME = data/MODEL/wood00.x				# [6]木
 MODEL_FILENAME = data/MODEL/wood01.x				# [7]木(中)
 MODEL_FILENAME = data/MODEL/wood02.x				# [8]木(大)
 MODEL_FILENAME = data/MODEL/weed00.x				# [9]草
-MODEL_FILENAME = data/MODEL/debris101.x				# [10]板ガレキ(中)
-MODEL_FILENAME = data/MODEL/debris102.x				# [11]板ガレキ(大)
-MODEL_FILENAME = data/MODEL/pillar000.x				# [12]柱(小)
+MODEL_FILENAME = data/MODEL/sinngou.x				# [10]信号機
+MODEL_FILENAME = data/MODEL/ゴミ箱.x				# [11]ゴミ箱
+MODEL_FILENAME = data/MODEL/building02.x			# [12]建物３
 MODEL_FILENAME = data/MODEL/pillar001.x				# [13]柱(中)
 MODEL_FILENAME = data/MODEL/pillar002.x				# [14]柱(大)
 MODEL_FILENAME = data/MODEL/treasurebox00.x			# [15]宝箱(灰)
 MODEL_FILENAME = data/MODEL/treasurebox01.x			# [16]宝箱(茶)
-MODEL_FILENAME = data/MODEL/bas.x			        # [17]バス(三浦)
+MODEL_FILENAME = data/MODEL/bus.x			        # [17]バス
 MODEL_FILENAME = data/MODEL/噴水.x			        # [18]
 MODEL_FILENAME = data/MODEL/バス停.x			    # [19]
 MODEL_FILENAME = data/MODEL/ビル.x			        # [20]
 MODEL_FILENAME = data/MODEL/北洋銀行.x				# [21]
 MODEL_FILENAME = data/MODEL/丸井今井.x				# [22]
 MODEL_FILENAME = data/MODEL/flowerbed.x				# [23]
+MODEL_FILENAME = data/MODEL/bench.x					# [24]ベンチ
+
 
 #------------------------------------------------------------------------------
 # カメラ情報
 #------------------------------------------------------------------------------
 CAMERASET
-	POS = 0.0 700.0 -1150.0			# 視点
+	POS = 0.0 500.0 -500.0			# 視点
 	REF = 0.0 0.0 0.0				# 注視点
 END_CAMERASET
 
@@ -697,11 +699,302 @@ MODELSET
 END_MODELSET
 
 #------------------
+# 建物
+#------------------
+MODELSET
+	TYPE = 1
+	POS = 900 -2 -500
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 2
+	POS = 820 -2 -780
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 2
+	POS = 1000 -2 -780
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 12
+	POS = -900 -2 -730
+	ROT = 0 270 0
+END_MODELSET
+
+#------------------
+# 車
+#------------------
+MODELSET
+	TYPE = 3
+	POS = 600 10 0
+	ROT = 0 0 0
+	SHADOW = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 3
+	POS = -780 10 -480
+	ROT = 0 270 0
+	SHADOW = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 4
+	POS = -600 0 0
+	ROT = 0 270 0
+END_MODELSET
+
+MODELSET
+	TYPE = 5
+	POS = 600 0 880
+	ROT = 0 90 0
+END_MODELSET
+
+#------------------
+# 木
+#------------------
+MODELSET
+	TYPE = 6
+	POS = 0 0 -260
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 6
+	POS = 0 0 -700
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = -240 0 0
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = -240 0 100
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = -240 0 -100
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = 240 0 0
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = 240 0 100
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = -40 0 200
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = -140 0 200
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = 40 0 200
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = 140 0 200
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 7
+	POS = 240 0 -100
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = 0 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = 60 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = 120 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = 180 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = 240 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = 300 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = -60 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = -120 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = -180 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = -240 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 8
+	POS = -300 0 -930
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
+# 草
+#------------------
+MODELSET
+	TYPE = 9
+	POS = 0 0 -300
+	ROT = 0 0 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 9
+	POS = 100 0 -600
+	ROT = 0 0 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 9
+	POS = -100 0 -900
+	ROT = 0 0 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+#------------------
+# 信号機
+#------------------
+MODELSET
+	TYPE = 10
+	POS = -740 0 720
+	ROT = 0 0 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = -275 0 720
+	ROT = 0 90 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = -740 0 250
+	ROT = 0 270 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = -275 0 250
+	ROT = 0 180 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = 740 0 720
+	ROT = 0 90 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = 275 0 720
+	ROT = 0 0 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = 740 0 250
+	ROT = 0 180 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+MODELSET
+	TYPE = 10
+	POS = 275 0 250
+	ROT = 0 270 0
+	SHADOW = 0
+	COLLISION = 0
+END_MODELSET
+
+#------------------
 # バス
 #------------------
 MODELSET
 	TYPE = 17
-	POS = -440 -40 -500
+	POS = -440 0 -500
 	ROT = 0 0 0
 	SHADOW = 0
 END_MODELSET
@@ -729,13 +1022,13 @@ END_MODELSET
 #------------------
 MODELSET
 	TYPE = 20
-	POS = -930 0 900
+	POS = -930 0 1000
 	ROT = 0 0 0
 END_MODELSET
 
 MODELSET
 	TYPE = 20
-	POS = 930 0 900
+	POS = 930 0 1000
 	ROT = 0 90 0
 END_MODELSET
 
@@ -744,7 +1037,7 @@ END_MODELSET
 #------------------
 MODELSET
 	TYPE = 21
-	POS = -960 20 -60
+	POS = -960 20 -120
 	ROT = 0 0 0
 END_MODELSET
 
@@ -753,7 +1046,7 @@ END_MODELSET
 #------------------
 MODELSET
 	TYPE = 22
-	POS = 960 0 0
+	POS = 960 0 -100
 	ROT = 0 0 0
 END_MODELSET
 
@@ -822,11 +1115,71 @@ MODELSET
 END_MODELSET
 
 #------------------
+# ベンチ
+#------------------
+MODELSET
+	TYPE = 24
+	POS = -20 0 -410
+	ROT = 0 90 0
+END_MODELSET
+
+MODELSET
+	TYPE = 24
+	POS = 20 0 -410
+	ROT = 0 270 0
+END_MODELSET
+
+MODELSET
+	TYPE = 24
+	POS = -20 0 -500
+	ROT = 0 90 0
+END_MODELSET
+
+MODELSET
+	TYPE = 24
+	POS = 20 0 -500
+	ROT = 0 270 0
+END_MODELSET
+
+MODELSET
+	TYPE = 24
+	POS = -20 0 -590
+	ROT = 0 90 0
+END_MODELSET
+
+MODELSET
+	TYPE = 24
+	POS = 20 0 -590
+	ROT = 0 270 0
+END_MODELSET
+
+#------------------
+# ゴミ箱
+#------------------
+MODELSET
+	TYPE = 11
+	POS = 20 0 -350
+	ROT = 0 0 0
+END_MODELSET
+
+MODELSET
+	TYPE = 11
+	POS = -20 0 -650
+	ROT = 0 0 0
+END_MODELSET
+
+#------------------
 # プレイヤー
 #------------------
 PLAYERSET
 	MOTION_FILENAME = data/player.txt
 	POS = 0 0 -200
+	ROT = 0 0 0
+END_PLAYERSET
+
+PLAYERSET
+	MOTION_FILENAME = data/motion_takahashi.txt
+	POS = 0 0 170
 	ROT = 0 0 0
 END_PLAYERSET
 
