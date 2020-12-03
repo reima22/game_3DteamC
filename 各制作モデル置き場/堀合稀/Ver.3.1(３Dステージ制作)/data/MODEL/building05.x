@@ -939,7 +939,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\Desktop\\marui imai 2.png";
+    "data\\TEXTURE\\marui01.png";
    }
   }
   Material {
@@ -948,7 +948,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\Desktop\\marui imai 1.png";
+    "data\\TEXTURE\\marui00.png";
    }
   }
   Material {
@@ -957,7 +957,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\marui imai 1.png";
+    "data\\TEXTURE\\marui00.png";
    }
   }
   Material {
@@ -966,7 +966,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\marui imai 2.png";
+    "data\\TEXTURE\\marui01.png";
    }
   }
   Material {
@@ -987,7 +987,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\TexturesCom_HighRiseGlass0049_1_seamless_S.jpg";
+    "data\\TEXTURE\\building_window01.jpg";
    }
   }
   Material {

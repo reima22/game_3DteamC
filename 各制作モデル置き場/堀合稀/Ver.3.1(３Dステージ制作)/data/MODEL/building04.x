@@ -1609,7 +1609,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\TexturesCom_HighRiseGlass0032_1_seamless_S.jpg";
+    "data\\TEXTURE\\building_window00.jpg";
    }
   }
   Material {
@@ -1618,7 +1618,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\TexturesCom_HighRiseGlass0032_1_seamless_S.jpg";
+    "data\\TEXTURE\\building_window00.jpg";
    }
   }
   Material {
@@ -1627,7 +1627,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\TexturesCom_HighRiseGlass0032_1_seamless_S.jpg";
+    "data\\TEXTURE\\building_window00.jpg";
    }
   }
   Material {
@@ -1636,7 +1636,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\TexturesCom_HighRiseGlass0032_1_seamless_S.jpg";
+    "data\\TEXTURE\\building_window00.jpg";
    }
   }
   Material {
