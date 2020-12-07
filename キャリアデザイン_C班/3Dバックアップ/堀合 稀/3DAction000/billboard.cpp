@@ -22,7 +22,6 @@ D3DXMATRIX g_mtxWorldBillboard;						// ワールドマトリックス
 HRESULT InitBillboard(void)
 {
 	// ローカル変数宣言
-	//VERTEX_2D *pVtx;
 	VERTEX_3D *pVtx;
 	LPDIRECT3DDEVICE9 pDevice;
 
@@ -35,16 +34,7 @@ HRESULT InitBillboard(void)
 		"data/TEXTURE/enemy003.png",
 		&g_pTextureBillboard);
 
-	// 変数の初期化
-	//for (int nCnt = 0; nCnt < MAX_WALL; nCnt++)
-	//{
-	//	g_aWall[nCnt].pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	//	
-	//}
-
 	g_posBillboard = D3DXVECTOR3(0.0f, 30.0f, 0.0f);
-	//g_movePolygon = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	//g_moveRot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 	// 頂点バッファの生成
 	pDevice->CreateVertexBuffer(

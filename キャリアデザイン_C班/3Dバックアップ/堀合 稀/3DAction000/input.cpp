@@ -44,7 +44,10 @@ int g_aKeyInfo[] =
 	DIK_I,
 	DIK_K,
 	DIK_LSHIFT,
-	DIK_RSHIFT
+	DIK_RSHIFT,
+	DIK_X,
+	DIK_U,
+	DIK_M
 };
 
 //==============================================================================

@@ -15987,7 +15987,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\êÖñ .png";
+    "data\\TEXTURE\\water.png";
    }
   }
  }

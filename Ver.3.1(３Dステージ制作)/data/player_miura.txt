@@ -38,12 +38,13 @@ CHARACTERSET
 	NUM_PARTS = 16					# パーツ数
 	MOVE = 5.0                      # 移動量
 	JUMP = 13.0                     # ジャンプ力
-	RADIUS = 100
+	RADIUS = 50.0
+	HEIGHT = 165.0
 
 	PARTSSET						# [0]体
 		INDEX = 0
 		PARENT = -1					# (親)NULL
-		POS = 0.0 100s.0 0.0
+		POS = 0.0 100.0 0.0
 		ROT = 0.0 0.0 0.0
 	END_PARTSSET
 	

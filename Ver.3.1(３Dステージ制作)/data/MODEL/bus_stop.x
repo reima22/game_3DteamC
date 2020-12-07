@@ -685,7 +685,7 @@ Mesh {
    0.000000;0.000000;0.000000;;
    0.000000;0.000000;0.000000;;
    TextureFilename {
-    "data\\TEXTURE\\ƒoƒX’â01.png";
+    "data\\TEXTURE\\bus_stop.png";
    }
   }
  }

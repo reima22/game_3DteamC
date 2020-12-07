@@ -16,6 +16,7 @@
 #include "billboard.h"
 #include "meshfield.h"
 #include "meshwall.h"
+#include "bullet.h"
 #include <stdio.h>
 #include <string.h>
 //#include "player.h"
@@ -353,6 +354,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// ビルボードの初期化
 	InitBillboard();
 
+	// 弾の初期化
+	InitBullet();
+
 	//// パッド入力の初期化処理
 	//InitGamepad(hInstance, hWnd);
 
@@ -402,6 +406,9 @@ void Uninit(void)
 
 	// ビルボードの終了処理
 	UninitBillboard();
+
+	// 弾の終了処理
+	UninitBullet();
 
 	// 影の終了処理
 	UninitShadow();
@@ -456,6 +463,9 @@ void Update(void)
 
 	// ビルボードの更新処理
 	UpdateBillboard();
+
+	// 弾の更新処理
+	UpdateBullet();
 
 	//// モードの設定
 	//switch (g_mode)
@@ -571,6 +581,9 @@ void Draw(void)
 		// メッシュ壁の描画処理
 		DrawMeshwall();
 
+		// 弾の描画処理
+		DrawBullet();
+
 		// モデルの描画処理
 		DrawModel();
 
@@ -610,10 +623,13 @@ void DrawFPS(void)
 	char aStr[1024];
 	int nNum;
 	Camera camera = GetCamera();
+	Model model = *GetModel();
 
 	nNum = sprintf(&aStr[0], "FPS:%d\n",g_nCountFPS);
 	nNum += sprintf(&aStr[nNum], " (視点)  X:%.2f Y:%.2f Z:%.2f\n", camera.posV.x, camera.posV.y, camera.posV.z);
-	nNum += sprintf(&aStr[nNum], " (注視点)X:%.2f Y:%.2f Z:%.2f\n", camera.posR.x, camera.posR.y, camera.posR.z);
+	nNum += sprintf(&aStr[nNum], " (注視点) X:%.2f Y:%.2f Z:%.2f\n", camera.posR.x, camera.posR.y, camera.posR.z);
+	nNum += sprintf(&aStr[nNum], "(モデルの位置) X:%.2f Y:%.2f Z:%.2f\n", model.pos.x, model.pos.y, model.pos.z);
+	nNum += sprintf(&aStr[nNum], "(モデルの向き) X:%.3f Y:%.3f Z:%.3f\n", model.rot.x, model.rot.y, model.rot.z);
 	nNum += sprintf(&aStr[nNum], "モデルの移動：[ ↑ ↓ ← → ]\n");
 	nNum += sprintf(&aStr[nNum], "モデル位置リセット：ENTER\nカメラ位置リセット：SPACE\n");
 

@@ -8,10 +8,12 @@
 #include "input.h"
 #include "camera.h"
 #include "shadow.h"
+#include "bullet.h"
 #include "math.h"
 
 // マクロ定義
-#define MODEL_MOVE	(3.0f)
+#define MODEL_MOVE	(1.0f)
+#define MODEL_TURN	(0.1f)
 
 //==============================================================================
 // グローバル変数
@@ -49,11 +51,11 @@ HRESULT InitModel(void)
 	// 変数の初期化
 	model.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	model.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	model.moveX = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	model.moveZ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	model.rotDest = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	model.move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 	// 影の設定
-	model.nIdx = SetShadow(model.pos, 10.0f, 10.0f);
+	model.nIdx = SetShadow(D3DXVECTOR3(model.pos.x,0.0f,model.pos.z), 10.0f, 10.0f);
 
 	return S_OK;
 }
@@ -92,121 +94,178 @@ void UpdateModel(void)
 	{
 		model.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 		model.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		model.moveX = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-		model.moveZ = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		model.rotDest = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		model.move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	}
+
+	// 弾の発射
+	if (GetKeyboardPress(KEYINFO_SHOT) == true)
+	{
+		SetBullet(
+			D3DXVECTOR3(model.pos.x, model.pos.y + 7.0f, model.pos.z),
+			D3DXVECTOR3(sinf(D3DX_PI - model.rot.y) * -5.0f, 0.0f, cosf(D3DX_PI - model.rot.y) * 5.0f),
+			100);
 	}
 
 	// 移動量の加算
-	model.pos += model.moveX;
-	model.pos += model.moveZ;
+	model.pos += model.move;
 
 	// 影の追従
-	SetPositionShadow(model.nIdx,model.pos);
+	SetPositionShadow(model.nIdx,D3DXVECTOR3(model.pos.x,0.0f,model.pos.z));
 
 	// モデルの移動
 	if (GetKeyboardPress(KEYINFO_BACK_MODEL) == true)
 	{
-		model.moveZ.x = sinf(camera.rot.y) * MODEL_MOVE;
-		model.moveZ.z = cosf(camera.rot.y) * MODEL_MOVE;
-		model.rot.y = camera.rot.y + D3DX_PI;
 		if (GetKeyboardPress(KEYINFO_LEFT_MODEL) == true)
-		{
-			model.moveX.x = cosf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
-			model.moveX.z = sinf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
-			model.rot.y = camera.rot.y + (D3DX_PI * 3 / 4);
-			model.moveX.x /= dSqrt;
-			model.moveX.z /= dSqrt;
-			model.moveZ.x /= dSqrt;
-			model.moveZ.z /= dSqrt;
+		{// 左上方向
+			model.move.x -= cosf(camera.rot.y + D3DX_PI / 4) * MODEL_MOVE;
+			model.move.z += sinf(camera.rot.y + D3DX_PI / 4) * MODEL_MOVE;
+			model.rotDest.y = camera.rot.y + (D3DX_PI * 3 / 4);
+			//model.rotDest.y += (camera.rot.y + (D3DX_PI * 3 / 4) - model.rot.y) * MODEL_TURN;
 		}
 		else if (GetKeyboardPress(KEYINFO_RIGHT_MODEL) == true)
-		{
-			model.moveX.x = cosf(-camera.rot.y) * MODEL_MOVE;
-			model.moveX.z = sinf(-camera.rot.y) * MODEL_MOVE;
-			model.rot.y = camera.rot.y - (D3DX_PI * 3 / 4);
-			model.moveX.x /= dSqrt;
-			model.moveX.z /= dSqrt;
-			model.moveZ.x /= dSqrt;
-			model.moveZ.z /= dSqrt;
+		{// 右上方向
+			model.move.x += cosf(camera.rot.y - D3DX_PI / 4) * MODEL_MOVE;
+			model.move.z -= sinf(camera.rot.y - D3DX_PI / 4) * MODEL_MOVE;
+			model.rotDest.y = camera.rot.y - (D3DX_PI * 3 / 4);
+			//model.rotDest.y += (camera.rot.y - (D3DX_PI * 3 / 4) - model.rot.y) * MODEL_TURN;
+		}
+		else
+		{// 上方向
+			model.move.x += sinf(camera.rot.y) * MODEL_MOVE;
+			model.move.z += cosf(camera.rot.y) * MODEL_MOVE;
+			model.rotDest.y = camera.rot.y + D3DX_PI;
+			//if (model.rot.y <= D3DX_PI && model.rot.y >= 0.0f && model.rot.y != D3DX_PI &&model.rot.y != -D3DX_PI)
+			//{
+			//	model.rotDest.y += (camera.rot.y + D3DX_PI) * MODEL_TURN;
+			//}
+			//if (model.rot.y >= -D3DX_PI && model.rot.y < 0.0f && model.rot.y != D3DX_PI &&model.rot.y != -D3DX_PI)
+			//{
+			//	model.rotDest.y -= (camera.rot.y + D3DX_PI) * MODEL_TURN;
+			//}
 		}
 	}
 	else if (GetKeyboardPress(KEYINFO_FORE_MODEL) == true)
 	{
-		model.moveZ.x = sinf(camera.rot.y - D3DX_PI) * MODEL_MOVE;
-		model.moveZ.z = cosf(camera.rot.y - D3DX_PI) * MODEL_MOVE;
-		model.rot.y = camera.rot.y;
 		if (GetKeyboardPress(KEYINFO_LEFT_MODEL) == true)
-		{
-			model.moveX.x = cosf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
-			model.moveX.z = sinf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
-			model.rot.y = camera.rot.y + D3DX_PI / 4;
-			model.moveX.x /= dSqrt;
-			model.moveX.z /= dSqrt;
-			model.moveZ.x /= dSqrt;
-			model.moveZ.z /= dSqrt;
+		{// 左下方向
+			model.move.x += cosf(camera.rot.y + D3DX_PI * 3 / 4) * MODEL_MOVE;
+			model.move.z -= sinf(camera.rot.y + D3DX_PI * 3 / 4) * MODEL_MOVE;
+			model.rotDest.y = camera.rot.y + D3DX_PI / 4;
+			//model.rotDest.y += (camera.rot.y + D3DX_PI / 4 - model.rot.y) * MODEL_TURN;
 		}
 		else if (GetKeyboardPress(KEYINFO_RIGHT_MODEL) == true)
-		{
-			model.moveX.x = cosf(-camera.rot.y) * MODEL_MOVE;
-			model.moveX.z = sinf(-camera.rot.y) * MODEL_MOVE;
-			model.rot.y = camera.rot.y + D3DX_PI / -4;
-			model.moveX.x /= dSqrt;
-			model.moveX.z /= dSqrt;
-			model.moveZ.x /= dSqrt;
-			model.moveZ.z /= dSqrt;
+		{// 右下方向
+			model.move.x -= cosf(camera.rot.y - D3DX_PI * 3 / 4) * MODEL_MOVE;
+			model.move.z += sinf(camera.rot.y - D3DX_PI * 3 / 4) * MODEL_MOVE;
+			model.rotDest.y = camera.rot.y + D3DX_PI / -4;
+			//model.rotDest.y += (camera.rot.y + D3DX_PI / -4 - model.rot.y) * MODEL_TURN;
 		}
+		else
+		{// 下方向
+			model.move.x += sinf(camera.rot.y - D3DX_PI) * MODEL_MOVE;
+			model.move.z += cosf(camera.rot.y - D3DX_PI) * MODEL_MOVE;
+			model.rotDest.y = camera.rot.y;
+			//model.rotDest.y += (camera.rot.y - model.rot.y) * 0.1f;
+		}
+		//model.moveZ.x = sinf(camera.rot.y - D3DX_PI) * MODEL_MOVE;
+		//model.moveZ.z = cosf(camera.rot.y - D3DX_PI) * MODEL_MOVE;
+		//model.rot.y = camera.rot.y;
+		//if (GetKeyboardPress(KEYINFO_LEFT_MODEL) == true)
+		//{
+		//	model.moveX.x = cosf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
+		//	model.moveX.z = sinf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
+		//	model.rot.y = camera.rot.y + D3DX_PI / 4;
+		//	//model.moveX.x /= dSqrt;
+		//	//model.moveX.z /= dSqrt;
+		//	//model.moveZ.x /= dSqrt;
+		//	//model.moveZ.z /= dSqrt;
+		//}
+		//else if (GetKeyboardPress(KEYINFO_RIGHT_MODEL) == true)
+		//{
+		//	model.moveX.x = cosf(-camera.rot.y) * MODEL_MOVE;
+		//	model.moveX.z = sinf(-camera.rot.y) * MODEL_MOVE;
+		//	model.rot.y = camera.rot.y + D3DX_PI / -4;
+		//	//model.moveX.x /= dSqrt;
+		//	//model.moveX.z /= dSqrt;
+		//	//model.moveZ.x /= dSqrt;
+		//	//model.moveZ.z /= dSqrt;
+		//}
 	}
 	else if (GetKeyboardPress(KEYINFO_LEFT_MODEL) == true)
-	{
-		model.moveX.x = cosf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
-		model.moveX.z = sinf(-camera.rot.y - D3DX_PI) * MODEL_MOVE;
-		model.rot.y = camera.rot.y + (D3DX_PI / 2);
+	{// 左方向
+		model.move.x -= cosf(camera.rot.y) * MODEL_MOVE;
+		model.move.z += sinf(camera.rot.y) * MODEL_MOVE;
+		model.rotDest.y = camera.rot.y + (D3DX_PI / 2);
+		//model.rotDest.y += (camera.rot.y + (D3DX_PI / 2) - model.rot.y) * MODEL_TURN;
 	}
 	else if (GetKeyboardPress(KEYINFO_RIGHT_MODEL) == true)
-	{
-		model.moveX.x = cosf(-camera.rot.y) * MODEL_MOVE;
-		model.moveX.z = sinf(-camera.rot.y) * MODEL_MOVE;
-		model.rot.y = camera.rot.y + (D3DX_PI / -2);
+	{// 右方向
+		model.move.x += cosf(camera.rot.y) * MODEL_MOVE;
+		model.move.z -= sinf(camera.rot.y) * MODEL_MOVE;
+		model.rotDest.y = camera.rot.y + (D3DX_PI / -2);
+		//if (model.rot.y < D3DX_PI && model.rot.y > D3DX_PI / 2)
+		//{
+		//	model.rotDest.y -= (camera.rot.y + (D3DX_PI / -2) - model.rot.y) * MODEL_TURN;
+
+		//}
+		//else
+		//{
+		//	model.rotDest.y += (camera.rot.y + (D3DX_PI / -2) - model.rot.y) * MODEL_TURN;
+		//}
+		
 	}
 
 	// モデルの上昇・下降
 	if (GetKeyboardPress(KEYINFO_UP_MODEL) == true)
 	{
-		model.moveX.y = 2;
+		model.move.y = 2;
 	}
 	else if (GetKeyboardPress(KEYINFO_DOWN_MODEL) == true)
 	{
-		model.moveX.y = -2;
+		model.move.y = -2;
 	}
 	else
 	{
-		model.moveX.y = 0;
+		model.move.y = 0;
 	}
 
 	// モデルの旋回
 	if (GetKeyboardPress(KEYINFO_TURN_LEFT_MODEL) == true)
 	{
-		model.rot.y += D3DX_PI / 18;
+		model.rotDest.y += D3DX_PI / 18;
 	}
-	else if (GetKeyboardPress(KEYINFO_TURN_RIGHT_MODEL) == true)
+	if (GetKeyboardPress(KEYINFO_TURN_RIGHT_MODEL) == true)
 	{
-		model.rot.y -= D3DX_PI / 18;
+		model.rotDest.y -= D3DX_PI / 18;
 	}
 
+	// 目的の回転角の上限
+	if (model.rotDest.y - model.rot.y < -D3DX_PI)
+	{
+		model.rotDest.y += D3DX_PI * 2.0f;
+	}
+	else if (model.rotDest.y - model.rot.y > D3DX_PI)
+	{
+		model.rotDest.y -= D3DX_PI * 2.0f;
+	}
+
+	// 向きの更新
+	model.rot.y += (model.rotDest.y - model.rot.y) * 0.1f;
+
+	// 現在の回転角の上限
 	if (model.rot.y < -D3DX_PI)
 	{
-		model.rot.y += D3DX_PI * 2;
+		model.rot.y += D3DX_PI * 2.0f;
 	}
 	else if (model.rot.y > D3DX_PI)
 	{
-		model.rot.y -= D3DX_PI * 2;
+		model.rot.y -= D3DX_PI * 2.0f;
 	}
 
 	// 加速後の減速処理
-	model.moveX.x += (0.0f - model.moveX.x) * SPEEDDOWN;
-	model.moveX.z += (0.0f - model.moveX.z) * SPEEDDOWN;
-	model.moveZ.x += (0.0f - model.moveZ.x) * SPEEDDOWN;
-	model.moveZ.z += (0.0f - model.moveZ.z) * SPEEDDOWN;
+	model.move.x += (0.0f - model.move.x) * SPEEDDOWN;
+	model.move.z += (0.0f - model.move.z) * SPEEDDOWN;
 }
 
 //==============================================================================
@@ -271,7 +330,7 @@ void DrawModel(void)
 }
 
 // モデルの取得
-Model GetModel(void)
+Model *GetModel(void)
 {
-	return model;
+	return &model;
 }
