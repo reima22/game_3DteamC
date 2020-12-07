@@ -1186,7 +1186,7 @@ PLAYERSET
 END_PLAYERSET
 
 PLAYERSET
-	MOTION_FILENAME = data/player_miura.txt
+	MOTION_FILENAME = data/playermiura.txt
 	POS = 0 0 500
 	ROT = 0 0 0
 END_PLAYERSET
