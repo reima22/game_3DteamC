@@ -11,8 +11,10 @@
 typedef struct
 {
 	D3DXVECTOR3 pos;					//位置
+	D3DXVECTOR3 posDest;
 	D3DXVECTOR3 rot;					//向き
-	D3DXVECTOR3 PurposeRot;				//目的の向き
+	D3DXVECTOR3 rotDest;				//目的の向き
+	D3DXVECTOR3 move;					//移動速度
 
 }Model;
 

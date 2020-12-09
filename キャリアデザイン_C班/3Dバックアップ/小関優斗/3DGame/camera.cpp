@@ -6,11 +6,12 @@
 //-----------------------------------------------------------------------------
 
 #include "camera.h"
+#include "model.h"
 #include "input.h"
 
 //マクロ
 #define MOVE_CAMERA_SPEED (3.0f)
-#define DISTANCE (100)
+#define DISTANCE (500)
 #define MOVE_ROT (0.0425f)
 
 //-----------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Camera g_Camera;	//カメラ情報
 //-----------------------------------------------------------------------------
 void InitCamera(void)
 {
-	g_Camera.rot = D3DXVECTOR3(0.0f, 0.0f,0.0f);		//移動
+	g_Camera.rot = D3DXVECTOR3(0.0f, 0.0f,0.0f);		//カメラの角度
 	g_Camera.posV = D3DXVECTOR3(0.0f, 400.0f,-DISTANCE);//視点
 	g_Camera.posR = D3DXVECTOR3(0.0f, 0.0f, 0.0f);		//注視点
 	g_Camera.VecU = D3DXVECTOR3(0.0f, 1.0f, 0.0f);		//法線ベクトル
@@ -42,6 +43,18 @@ void UninitCamera(void)
 //-----------------------------------------------------------------------------
 void UpdateCamera(void)
 {
+
+	Model *pModel;
+	pModel = GetModel();
+	
+	g_Camera.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
+	g_Camera.posVDest.x = pModel->pos.x - 20 * sin(pModel->rotDest.y);
+	g_Camera.posVDest.z = pModel->pos.z - 20 * cosf(pModel->rotDest.y);
+	g_Camera.posVDest.y = pModel->pos.y + 200;
+
+	g_Camera.posV += (g_Camera.posVDest - g_Camera.posV) * 0.2f;
+	g_Camera.posR += (g_Camera.posRDest - g_Camera.posR) * 0.2f;
 
 	//カメラ移動右
 	if (GetKeyboardPress(DIK_D) == true)

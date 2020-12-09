@@ -16,6 +16,7 @@
 #include "shadow.h"
 #include "wall.h"
 #include "billboard.h"
+#include "Bullet.h"
 #include <stdio.h>
 
 //プロトタイプ宣言
@@ -277,6 +278,9 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//ビルボードの初期化処理
 	InitBillboard();
 
+	//弾の初期化処理
+	InitBullet();
+
 	//影の初期化処理
 	InitShadow();
 
@@ -305,6 +309,9 @@ void Uninit(void)
 
 	//影の終了処理
 	UninitShadow();
+
+	//弾の終了処理
+	UninitBullet();
 
 	//ビルボードの終了処理
 	UninitBillboard();
@@ -370,6 +377,9 @@ void Update(void)
 	//ビルボードの更新処理
 	UpdateBillboard();
 
+	//弾の更新処理
+	UpdateBullet();
+
 	//影の更新処理
 	UpdateShadow();
 
@@ -413,6 +423,9 @@ void Draw(void)
 		//ビルボードの描画
 		//DrawBillboard();
 
+		//弾の描画処理
+		DrawBullet();
+		
 		//影の描画処理
 		DrawShadow();
 
@@ -454,11 +467,18 @@ void DrawTxt(void)
 	Model *pModel;
 	pModel = GetModel();
 
+	Bullet *pBullet;
+	pBullet = GetBullet();
+
 	RECT rect = { 0,0,SCREEN_WIDTH,SCREEN_HEIGHT };
-	char aStr[1024];
+	char aStr[2048];
 	int nNum = sprintf(&aStr[0],"カメラ視点:(%.2f , %.2f , %.2f)\n\n",pCamera->posV.x, pCamera->posV.y, pCamera->posV.z);
 
+	nNum += sprintf(&aStr[nNum], "カメラ目的の視点:(%.2f , %.2f , %.2f)\n\n", pCamera->posVDest.x, pCamera->posVDest.y, pCamera->posVDest.z);
+
 	nNum += sprintf(&aStr[nNum], "カメラ注視点:(%.2f , %.2f , %.2f)\n\n", pCamera->posR.x, pCamera->posR.y, pCamera->posR.z);
+
+	nNum += sprintf(&aStr[nNum], "カメラ目的の注視点:(%.2f , %.2f , %.2f)\n\n", pCamera->posRDest.x, pCamera->posRDest.y, pCamera->posRDest.z);
 
 	nNum += sprintf(&aStr[nNum], "カメラ角度:(%.2f)\n\n", pCamera->rot.y);
 
@@ -466,7 +486,7 @@ void DrawTxt(void)
 
 	nNum += sprintf(&aStr[nNum], "モデル角度:(%.2f)\n\n", pModel->rot.y);
 
-	nNum += sprintf(&aStr[nNum], "モデルの目的の角度:(%.2f)\n\n", pModel->PurposeRot.y);
+	nNum += sprintf(&aStr[nNum], "モデルの目的の角度:(%.2f)\n\n", pModel->rotDest.y);
 
 	nNum += sprintf(&aStr[nNum], "sinf:(%.4f)\n\n", sinf(pCamera->rot.y));
 
