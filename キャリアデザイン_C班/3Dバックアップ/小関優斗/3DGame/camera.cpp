@@ -47,14 +47,30 @@ void UpdateCamera(void)
 	Model *pModel;
 	pModel = GetModel();
 	
+	if (g_Camera.rot.y >= D3DX_PI)
+	{
+		g_Camera.rot.y -= D3DX_PI * 2.0f;
+	}
+	if (g_Camera.rot.y <= -D3DX_PI)
+	{
+		g_Camera.rot.y += D3DX_PI * 2.0f;
+	}
+
 	g_Camera.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
-	g_Camera.posVDest.x = pModel->pos.x - 20 * sin(pModel->rotDest.y);
-	g_Camera.posVDest.z = pModel->pos.z - 20 * cosf(pModel->rotDest.y);
+	g_Camera.posV.x = pModel->pos.x + sinf(g_Camera.rot.y) * -200;
+	g_Camera.posV.z = pModel->pos.z + cosf(g_Camera.rot.y) * -200;
+
+	g_Camera.posVDest.x = pModel->pos.x - sinf(g_Camera.rot.y) * 200;
+	g_Camera.posVDest.z = pModel->pos.z - cosf(g_Camera.rot.y) * 200;
 	g_Camera.posVDest.y = pModel->pos.y + 200;
 
-	g_Camera.posV += (g_Camera.posVDest - g_Camera.posV) * 0.2f;
-	g_Camera.posR += (g_Camera.posRDest - g_Camera.posR) * 0.2f;
+	g_Camera.posRDest.x = pModel->pos.x - 20 * sinf(pModel->rotDest.y);
+	g_Camera.posRDest.z = pModel->pos.z - 20 * cosf(pModel->rotDest.y);
+	g_Camera.posRDest.y = pModel->pos.y;
+
+	g_Camera.posV += (g_Camera.posVDest - g_Camera.posV) * 0.1f;
+	g_Camera.posR += (g_Camera.posRDest - g_Camera.posR) * 0.1f;
 
 	//カメラ移動右
 	if (GetKeyboardPress(DIK_D) == true)
@@ -114,14 +130,7 @@ void UpdateCamera(void)
 		g_Camera.posR.y -= MOVE_CAMERA_SPEED;
 	}
 
-	if (g_Camera.rot.y >= D3DX_PI)
-	{
-		g_Camera.rot.y -= D3DX_PI * 2.0f;
-	}
-	if (g_Camera.rot.y <= -D3DX_PI)
-	{
-		g_Camera.rot.y += D3DX_PI * 2.0f;
-	}
+	
 
 	//カメラ移動視点左回転
 	if (GetKeyboardPress(DIK_Z) == true)
