@@ -8,12 +8,13 @@
 #include "model.h"
 #include "input.h"
 #include "camera.h"
+#include "Bullet.h"
 
 //-----------------------------------------------------------------------------
 //マクロ定義
 //-----------------------------------------------------------------------------
-#define MOVE_MODEL_SPEED (3.0f)
-#define MODEL_ROT_SPEED (0.05f)
+#define MOVE_MODEL_SPEED (1.0f)
+#define MODEL_ROT_SPEED (0.2f)
 #define MODEL_ROT_SPEED2 (0.5f)
 
 //-----------------------------------------------------------------------------
@@ -24,6 +25,8 @@ LPD3DXBUFFER g_pBuffMatModel = NULL;	//マテリアル（材質情報）へのポインタ
 DWORD g_NumMatModel = 0;				//マテリアルの数
 Model g_Model;							//モデル情報
 D3DXMATRIX g_mtxWorldModel;				//ワールドマトリックス
+int nCntBullet;
+bool g_Key;
 
 //-----------------------------------------------------------------------------
 //初期化処理
@@ -45,6 +48,9 @@ void InitModel(void)
 	//向き初期化
 	g_Model.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
+	nCntBullet = 0;
+
+	g_Key = false;
 }
 
 //-----------------------------------------------------------------------------
@@ -86,14 +92,126 @@ void UpdateModel(void)
 	Camera *pCamera;
 	pCamera = GetCamera();
 
-	if (g_Model.PurposeRot.y > D3DX_PI)
+	//モデル移動右
+	if (GetKeyboardPress(DIK_RIGHT) == true)
 	{
-		g_Model.PurposeRot.y -= D3DX_PI * 2.0f;
+		if (g_Key == false)
+		{
+			g_Model.rotDest.y = pCamera->rot.y - (D3DX_PI / 2);
+			g_Model.move.x += cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+			g_Model.move.z -= sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		}
+
 	}
-	if (g_Model.PurposeRot.y < -D3DX_PI)
+
+	//モデル移動左						 
+	if (GetKeyboardPress(DIK_LEFT) == true)
 	{
-		g_Model.PurposeRot.y += D3DX_PI * 2.0f;
+		if (g_Key == false)
+		{
+			g_Model.rotDest.y = pCamera->rot.y + (D3DX_PI / 2);
+			g_Model.move.x -= cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+			g_Model.move.z += sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		}
 	}
+
+	//モデル移動奥						 
+	if (GetKeyboardPress(DIK_UP) == true)
+	{
+		//モデル移動右上
+		if (GetKeyboardPress(DIK_RIGHT) == true)
+		{
+			g_Model.rotDest.y = pCamera->rot.y - ((D3DX_PI / 4) + (D3DX_PI / 2));
+			g_Model.move.x += cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+			g_Model.move.z -= sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		}
+		//モデル移動左上						 
+		else if (GetKeyboardPress(DIK_LEFT) == true)
+		{
+			g_Model.rotDest.y = pCamera->rot.y + ((D3DX_PI / 4) + (D3DX_PI / 2));
+			g_Model.move.x -= cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+			g_Model.move.z += sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		}
+		else
+		{
+			g_Model.rotDest.y = pCamera->rot.y + D3DX_PI;
+		}
+		g_Model.move.x += sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		g_Model.move.z += cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+
+		g_Key = true;
+	}
+
+	//モデル移動手前						
+	if (GetKeyboardPress(DIK_DOWN) == true)
+	{
+	
+		//モデル移動右手前
+		if (GetKeyboardPress(DIK_RIGHT) == true)
+		{
+			g_Model.rotDest.y = pCamera->rot.y - (D3DX_PI / 4);
+			g_Model.move.x += cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+			g_Model.move.z -= sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		}
+		//モデル移動左手前					 
+		else if (GetKeyboardPress(DIK_LEFT) == true)
+		{
+			g_Model.rotDest.y = pCamera->rot.y + (D3DX_PI / 4);
+			g_Model.move.x -= cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+			g_Model.move.z += sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		}
+		else
+		{
+			g_Model.rotDest.y = pCamera->rot.y;
+		}
+		g_Model.move.x -= sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		g_Model.move.z -= cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
+		g_Key = true;
+	}
+
+	if (GetKeyboardRelease(DIK_DOWN) == true || GetKeyboardRelease(DIK_UP) == true)
+	{
+		g_Key = false;
+	}
+
+	//モデル右回転
+	if (GetKeyboardPress(DIK_RSHIFT) == true)
+	{
+		g_Model.rotDest.y += D3DX_PI / 18;
+	}
+
+	//モデル左回転
+	if (GetKeyboardPress(DIK_LSHIFT) == true)
+	{
+		g_Model.rotDest.y -= D3DX_PI / 18;
+	}
+	
+
+	if (GetKeyboardPress(DIK_K) == true)
+	{
+		nCntBullet++;
+		if ((nCntBullet % 1) == 0)
+		{
+			SetBullet(g_Model.pos, D3DXVECTOR3(-sinf(g_Model.rot.y), 0.0f, -cosf(g_Model.rot.y)), 100);
+		}
+	}
+
+	if (g_Model.rotDest.y - g_Model.rot.y > D3DX_PI)
+	{
+		g_Model.rotDest.y -= D3DX_PI * 2.0f;
+	}
+	if (g_Model.rotDest.y - g_Model.rot.y < -D3DX_PI)
+	{
+		g_Model.rotDest.y += D3DX_PI * 2.0f;
+	}
+
+	g_Model.pos.x += g_Model.move.x;
+	g_Model.pos.z += g_Model.move.z;
+	g_Model.move.x += (0 - g_Model.move.x) * 0.2f;
+	g_Model.move.z += (0 - g_Model.move.z) * 0.2f;
+
+	g_Model.rot.y += (g_Model.rotDest.y - g_Model.rot.y) * 0.1f;
+
 	if (g_Model.rot.y > D3DX_PI)
 	{
 		g_Model.rot.y -= D3DX_PI * 2.0f;
@@ -103,69 +221,18 @@ void UpdateModel(void)
 		g_Model.rot.y += D3DX_PI * 2.0f;
 	}
 
-	//モデル移動右
-	if (GetKeyboardPress(DIK_RIGHT) == true)
-	{
-		g_Model.PurposeRot.y -= cosf(pCamera->rot.y - g_Model.PurposeRot.y) * MODEL_ROT_SPEED2;
-		g_Model.pos.x += cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-		g_Model.pos.z -= sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-
-
-	}
-
-	//モデル移動左						 
-	if (GetKeyboardPress(DIK_LEFT) == true)
-	{
-		g_Model.PurposeRot.y += cosf(pCamera->rot.y - g_Model.PurposeRot.y) * MODEL_ROT_SPEED2;
-		g_Model.pos.x -= cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-		g_Model.pos.z += sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-	}
-
-	//モデル移動奥						 
-	if (GetKeyboardPress(DIK_UP) == true)
-	{
-		g_Model.PurposeRot.y -= sinf(pCamera->rot.y - g_Model.PurposeRot.y) * MODEL_ROT_SPEED2;
-		g_Model.pos.x += sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-		g_Model.pos.z += cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-	}
-
-	//モデル移動手前						
-	if (GetKeyboardPress(DIK_DOWN) == true)
-	{
-		g_Model.PurposeRot.y += sinf(pCamera->rot.y - g_Model.PurposeRot.y) * MODEL_ROT_SPEED2;
-		g_Model.pos.x -= sinf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-		g_Model.pos.z -= cosf(pCamera->rot.y) * MOVE_MODEL_SPEED;
-	}
-
-	//モデル右回転
-	if (GetKeyboardPress(DIK_RSHIFT) == true)
-	{
-		g_Model.PurposeRot.y += MODEL_ROT_SPEED;
-		g_Model.rot.y += sinf(g_Model.PurposeRot.y - g_Model.rot.y) * 0.5f;
-	}
-
-	//モデル左回転
-	if (GetKeyboardPress(DIK_LSHIFT) == true)
-	{
-		g_Model.PurposeRot.y -= MODEL_ROT_SPEED;
-		g_Model.rot.y += sinf(g_Model.PurposeRot.y - g_Model.rot.y) * 0.5f;
-	}
-
-	g_Model.rot.y += sinf(g_Model.PurposeRot.y - g_Model.rot.y) * 0.5f;
-
 	if (GetKeyboardTrigger(DIK_RETURN) == true)
 	{
 		//位置初期化
 		g_Model.pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
-		//向き初期化
-		g_Model.rot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		//移動量初期化
+		g_Model.move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
-
-		g_Model.PurposeRot = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		//目的の向き
+		g_Model.rotDest = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 	}
-	
 }
 
 //-----------------------------------------------------------------------------

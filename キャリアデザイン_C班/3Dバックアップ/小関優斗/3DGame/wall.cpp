@@ -50,11 +50,15 @@ HRESULT InitWall(void)
 	for (int nCntWall = 0; nCntWall < MAX_WALL; nCntWall++)
 	{
 
+		g_aWall[0].rot = (D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 		g_aWall[0].pos = (D3DXVECTOR3(0.0f, 0.0f, 50.0f));
-
-		g_aWall[1].pos = (D3DXVECTOR3(0.0f, 0.0f, 50.0f));
-
-		g_aWall[2].pos = (D3DXVECTOR3(0.0f, 0.0f, 50.0f));
+		
+		g_aWall[1].rot = (D3DXVECTOR3(0.0f, 1.57f, 0.0f));
+		g_aWall[1].pos = (D3DXVECTOR3(50.0f, 0.0f, 50.0f));
+	
+		g_aWall[2].rot = (D3DXVECTOR3(0.0f, -1.57f, 0.0f));
+		g_aWall[2].pos = (D3DXVECTOR3(-50.0f, 0.0f, 50.0f));
+		
 
 		//’¸“_À•W
 		pVtx[0].pos = D3DXVECTOR3(g_aWall[nCntWall].pos.x - POLYGON_SIZE, g_aWall[nCntWall].pos.y + POLYGON_SIZE, g_aWall[nCntWall].pos.z);
