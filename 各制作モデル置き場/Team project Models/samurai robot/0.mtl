@@ -1,0 +1,107 @@
+# Blender MTL File: 'ModelRenderLighting.blend'
+# Material Count: 7
+
+newmtl 38_+KatanaCase.KatanaCase_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.603504 0.799939 0.627831
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga
+
+newmtl 38_+KatanaHandle.KatanaHandle_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.563602 0.663615 0.426396
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga
+
+newmtl 38_+SwordCase.SwordCase_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.534575 0.614216 0.726662
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga
+
+newmtl 38_+SwordHandle.SwordHandle_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.665662 0.632016 0.577160
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga
+
+newmtl 38_-Katana.Katana_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.409419 0.708350 0.483908
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga
+
+newmtl 38_-Sword.Sword_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.610129 0.638163 0.739608
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga
+
+newmtl 38_Body_1_0_0.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.723050 0.628357 0.578823
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd Body_D.tga
+map_Bump Body_N.tga
+map_Ke Body_E.tga
+map_Ks Body_S.tga
+map_d Body_D.tga

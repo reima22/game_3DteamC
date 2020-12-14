@@ -1,0 +1,26 @@
+# Blender MTL File: 'ModelRenderLighting.blend'
+# Material Count: 2
+
+newmtl 21_allegorica_1_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.400157 0.740721 0.420682
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 0
+map_Kd allegorica_d.tga
+map_d allegorica_d.tga
+
+newmtl 21_body_1_0_0.001
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.576425 0.444953 0.453943
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 0
+map_Kd body_d.tga
+map_d body_d.tga
