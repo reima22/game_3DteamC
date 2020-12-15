@@ -149,15 +149,15 @@ void UpdateModel(void)
 	{
 		if (GetKeyboardPress(KEYINFO_LEFT_MODEL) == true)
 		{// ç∂â∫ï˚å¸
-			model.move.x += cosf(camera.rot.y + D3DX_PI * 3 / 4) * MODEL_MOVE;
-			model.move.z -= sinf(camera.rot.y + D3DX_PI * 3 / 4) * MODEL_MOVE;
+			model.move.x += cosf(D3DX_PI + camera.rot.y * 3 / 4) * MODEL_MOVE;
+			model.move.z -= sinf(D3DX_PI + camera.rot.y * 3 / 4) * MODEL_MOVE;
 			model.rotDest.y = camera.rot.y + D3DX_PI / 4;
 			//model.rotDest.y += (camera.rot.y + D3DX_PI / 4 - model.rot.y) * MODEL_TURN;
 		}
 		else if (GetKeyboardPress(KEYINFO_RIGHT_MODEL) == true)
 		{// âEâ∫ï˚å¸
-			model.move.x -= cosf(camera.rot.y - D3DX_PI * 3 / 4) * MODEL_MOVE;
-			model.move.z += sinf(camera.rot.y - D3DX_PI * 3 / 4) * MODEL_MOVE;
+			model.move.x -= cosf(D3DX_PI - camera.rot.y * 3 / 4) * MODEL_MOVE;
+			model.move.z += sinf(D3DX_PI - camera.rot.y * 3 / 4) * MODEL_MOVE;
 			model.rotDest.y = camera.rot.y + D3DX_PI / -4;
 			//model.rotDest.y += (camera.rot.y + D3DX_PI / -4 - model.rot.y) * MODEL_TURN;
 		}
