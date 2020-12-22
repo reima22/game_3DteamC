@@ -157,6 +157,7 @@
     <ClCompile Include="meshfild.cpp" />
     <ClCompile Include="meshwall.cpp" />
     <ClCompile Include="model.cpp" />
+    <ClCompile Include="player.cpp" />
     <ClCompile Include="polygon.cpp" />
     <ClCompile Include="shadow.cpp" />
     <ClCompile Include="wall.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="meshfild.h" />
     <ClInclude Include="meshwall.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="player.h" />
     <ClInclude Include="polygon.h" />
     <ClInclude Include="shadow.h" />
     <ClInclude Include="wall.h" />

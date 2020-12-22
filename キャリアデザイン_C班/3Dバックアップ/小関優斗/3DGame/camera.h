@@ -23,6 +23,8 @@ typedef struct
 	D3DXVECTOR3 VecU;			//上方向ベクトル
 	D3DXMATRIX mtxProjection;	//プロジェクションマトリックス
 	D3DXMATRIX mtxView;			//ビューマトリックス
+	float Distance;				//注視点との距離
+	int Rpos;					//モデルの前
 
 }Camera;
 

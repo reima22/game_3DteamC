@@ -5,6 +5,7 @@
 //
 //-----------------------------------------------------------------------------
 #define _CRT_SECURE_NO_WARNINGS
+
 #include "main.h"
 #include "input.h"
 #include "polygon.h"
@@ -12,11 +13,12 @@
 #include "meshwall.h"
 #include "camera.h"
 #include "light.h"
-#include "model.h"
+//#include "model.h"
 #include "shadow.h"
 #include "wall.h"
 #include "billboard.h"
 #include "Bullet.h"
+#include "player.h"
 #include <stdio.h>
 
 //プロトタイプ宣言
@@ -266,14 +268,17 @@ HRESULT Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	//メッシュフィールドの初期化処理
 	InitMeshifild();
 
+	//プレイヤーの初期化処理
+	InitPlayer();
+
 	//メッシュの壁の初期化処理
-	InitMeshwall();
+	//InitMeshwall();
 
 	//壁の初期化処理
 	InitWall();
 
 	//モデルの初期化処理
-	InitModel();
+	//InitModel();
 
 	//ビルボードの初期化処理
 	InitBillboard();
@@ -317,13 +322,16 @@ void Uninit(void)
 	UninitBillboard();
 
 	//モデル終了処理
-	UninitModel();
+	//UninitModel();
+
+	//プレイヤー終了処理
+	UninitPlayer();
 
 	//壁の終了処理
 	UninitWall();
 
 	//メッシュの壁の終了処理
-	UninitMeshwall();
+	//UninitMeshwall();
 
 	//メッシュフィールドの終了処理
 	UninitMeshifild();
@@ -369,10 +377,13 @@ void Update(void)
 	UpdateMeshwall();
 
 	//壁の更新処理
-	UpdateWall();
+	//UpdateWall();
 
 	//モデルの更新処理
-	UpdateModel();
+	//UpdateModel();
+
+	//プレイヤーの更新処理
+	UpdatePlayer();
 
 	//ビルボードの更新処理
 	UpdateBillboard();
@@ -408,17 +419,22 @@ void Draw(void)
 
 		SetCamera();
 	
+		//プレイヤー描画処理
+		DrawPlayer();
+
 		//メッシュフィールドの描画
 		DrawMeshifild();
 
 		//メッシュの壁の描画
-		DrawMeshwall();
+		//DrawMeshwall();
 
 		//壁の描画処理
 		DrawWall();
 
 		//モデルの描画処理
-		DrawModel();
+		//DrawModel();
+
+		
 
 		//ビルボードの描画
 		//DrawBillboard();
@@ -464,8 +480,8 @@ void DrawTxt(void)
 	Camera *pCamera;
 	pCamera = GetCamera();
 
-	Model *pModel;
-	pModel = GetModel();
+	/*Model *pModel;
+	pModel = GetModel();*/
 
 	Bullet *pBullet;
 	pBullet = GetBullet();
@@ -482,15 +498,9 @@ void DrawTxt(void)
 
 	nNum += sprintf(&aStr[nNum], "カメラ角度:(%.2f)\n\n", pCamera->rot.y);
 
-	nNum += sprintf(&aStr[nNum], "モデルの位置:(%.2f , %.2f , %.2f)\n\n", pModel->pos.x, pModel->pos.y, pModel->pos.z);
+	//nNum += sprintf(&aStr[nNum], "モデルの位置:(%.2f , %.2f , %.2f)\n\n", pModel->pos.x, pModel->pos.y, pModel->pos.z);
 
-	nNum += sprintf(&aStr[nNum], "モデル角度:(%.2f)\n\n", pModel->rot.y);
-
-	nNum += sprintf(&aStr[nNum], "モデルの目的の角度:(%.2f)\n\n", pModel->rotDest.y);
-
-	nNum += sprintf(&aStr[nNum], "sinf:(%.4f)\n\n", sinf(pCamera->rot.y));
-
-	nNum += sprintf(&aStr[nNum], "cosf:(%.4f)\n\n", cosf(pCamera->rot.y));
+	//nNum += sprintf(&aStr[nNum], "モデル角度:(%.2f)\n\n", pModel->rot.y);
 
 	//テキストの描画
 	g_pFont->DrawTextA(NULL, &aStr[0], -1, &rect, DT_LEFT, D3DCOLOR_RGBA(255, 255, 255, 255));

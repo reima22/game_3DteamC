@@ -20,7 +20,13 @@ LPDIRECT3DTEXTURE9 g_pTextureMeshwall = NULL;		//テクスチャ
 D3DXVECTOR3 g_posMeshwall;
 D3DXVECTOR3 g_rotMeshwall;
 D3DXMATRIX g_mtxWorldMeshwall;
-
+//int g_Maxpoint;		//頂点数
+//int g_nPolygon;		//必要なポリゴン数
+//int g_IndxPoint;	//必要な頂点数
+//int Column;			//横ポリゴン数
+//int Line;			//奥行ポリゴン数
+//float fWidth;		//横幅
+//float fDepth;		//奥行幅
 //-----------------------------------------------------------------------------
 //初期化処理
 //-----------------------------------------------------------------------------
@@ -28,6 +34,7 @@ HRESULT InitMeshwall(void)
 {
 	//ローカル変数
 	LPDIRECT3DDEVICE9 pDevice;
+	int nCount = 0;
 
 	//デバイスの取得
 	pDevice = GetDevice();
@@ -37,13 +44,21 @@ HRESULT InitMeshwall(void)
 
 	g_posMeshwall = (D3DXVECTOR3(0.0f, 0.0f, 50.0f));
 	g_rotMeshwall = (D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+	/*Line = 2;
+	Column = 2;
+	g_Maxpoint = Line * 2 * (Column + 2) - 2;
+	g_nPolygon = Column * Line * 2 + (4 * (Line - 1));
+	g_IndxPoint = (Column + 1) * (Line + 1);
+	fWidth = 100.0f;
+	fDepth = 100.0f;*/
 
-	//頂点バッファの生成
-	pDevice->CreateVertexBuffer(sizeof(VERTEX_3D) * 9, D3DUSAGE_WRITEONLY, FVF_VERTEX_3D,
-		D3DPOOL_MANAGED, &g_pVtxBuffMeshwall, NULL);
 
-	//インデックスバッファ生成
-	pDevice->CreateIndexBuffer(sizeof(WORD) * 14, D3DUSAGE_WRITEONLY, D3DFMT_INDEX16, D3DPOOL_MANAGED, &g_pIndxBuffMeshwall, NULL);
+	////頂点バッファの生成
+	//pDevice->CreateVertexBuffer(sizeof(VERTEX_3D) * g_IndxPoint, D3DUSAGE_WRITEONLY, FVF_VERTEX_3D,
+	//	D3DPOOL_MANAGED, &g_pVtxBuffMeshwall, NULL);
+
+	////インデックスバッファ生成
+	//pDevice->CreateIndexBuffer(sizeof(WORD) * g_Maxpoint, D3DUSAGE_WRITEONLY, D3DFMT_INDEX16, D3DPOOL_MANAGED, &g_pIndxBuffMeshwall, NULL);
 
 	WORD * pIndx;
 
@@ -53,7 +68,7 @@ HRESULT InitMeshwall(void)
 	g_pVtxBuffMeshwall->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点座標
-	pVtx[0].pos = D3DXVECTOR3(g_posMeshwall.x - WALL_SIZE, g_posMeshwall.y + WALL_SIZE * 2, g_posMeshwall.z );
+	/*pVtx[0].pos = D3DXVECTOR3(g_posMeshwall.x - WALL_SIZE, g_posMeshwall.y + WALL_SIZE * 2, g_posMeshwall.z );
 	pVtx[1].pos = D3DXVECTOR3(g_posMeshwall.x, g_posMeshwall.y + WALL_SIZE * 2, g_posMeshwall.z);
 	pVtx[2].pos = D3DXVECTOR3(g_posMeshwall.x + WALL_SIZE, g_posMeshwall.y + WALL_SIZE * 2, g_posMeshwall.z);
 	pVtx[3].pos = D3DXVECTOR3(g_posMeshwall.x - WALL_SIZE, g_posMeshwall.y + WALL_SIZE, g_posMeshwall.z);
@@ -61,7 +76,16 @@ HRESULT InitMeshwall(void)
 	pVtx[5].pos = D3DXVECTOR3(g_posMeshwall.x + WALL_SIZE, g_posMeshwall.y + WALL_SIZE, g_posMeshwall.z);
 	pVtx[6].pos = D3DXVECTOR3(g_posMeshwall.x - WALL_SIZE, g_posMeshwall.y, g_posMeshwall.z);
 	pVtx[7].pos = D3DXVECTOR3(g_posMeshwall.x, g_posMeshwall.y, g_posMeshwall.z);
-	pVtx[8].pos = D3DXVECTOR3(g_posMeshwall.x + WALL_SIZE, g_posMeshwall.y, g_posMeshwall.z);
+	pVtx[8].pos = D3DXVECTOR3(g_posMeshwall.x + WALL_SIZE, g_posMeshwall.y, g_posMeshwall.z);*/
+
+	//for (int nCntLine = 0; nCntLine < (Line + 1); nCntLine++)
+	//{//奥行
+	//	for (int nCntColumn = 0; nCntColumn < (Column + 1); nCntColumn++, nCount++)
+	//	{//横軸
+	//		//ポリゴンの各頂点座標
+	//		//pVtx[0].pos = D3DXVECOTR3()
+	//	}
+	//}
 
 	//インデックスバッファをロックし番号ポインタへのっポインタを取得
 	g_pIndxBuffMeshwall->Lock(0, 0, (void**)&pIndx, 0);
