@@ -137,8 +137,7 @@ void UpdateGame(void)
 	PLAYER *Player;
 	PAUSE_MENU pause;
 	FADE fade;
-	//ENEMYINFO info = GetInfo();		// “G‚Ì‘S‘Ìî•ñ‚ÌŽæ“¾
-	//PHASESTATE phase = GetPhase();	// Œx‰úó‘Ô‚ÌŽæ“¾
+	int nTimer = GetTimer();
 
 	// ƒvƒŒƒCƒ„[‚ÌŽæ“¾
 	Player = GetPlayer();
@@ -188,7 +187,7 @@ void UpdateGame(void)
 	}
 	else
 	{ // ”ñƒ|[ƒYŽž‚Ìˆ—
-		if (/*info.boss != BIGENEMY_DEATH && */Player->state != PLAYERSTATE_GAMEOVER)
+		if (Player->state != PLAYERSTATE_GAMEOVER)
 		{ // ƒQ[ƒ€’†‚Ìˆ—
 		  // ”wŒiƒ|ƒŠƒSƒ“‚ÌXVˆ—
 			UpdateBg();
@@ -223,7 +222,7 @@ void UpdateGame(void)
 		}
 
 		// ƒŠƒUƒ‹ƒg‰æ–Ê‚Ö‚Ì‘JˆÚ
-		if (/*info.boss == BIGENEMY_DEATH ||*/ Player->state == PLAYERSTATE_GAMEOVER)
+		if (Player->state == PLAYERSTATE_GAMEOVER || nTimer <= 0)
 		{
 			SetFade(FADE_OUT, MODE_RESULT);
 		}

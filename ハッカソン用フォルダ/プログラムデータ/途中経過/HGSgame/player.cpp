@@ -13,6 +13,7 @@
 #include "sound.h"
 #include "particle.h"
 #include "gamepad.h"
+#include "block.h"
 
 //==============================================================================
 // マクロ定義
@@ -280,6 +281,9 @@ PLAYER *GetPlayer(void)
 //==============================================================================
 bool HitPlayer(int nDamage)
 {
+	// ローカル変数宣言
+	int nScore = GetScore();
+
 	// ダメージ計算
 	Player.nLife -= nDamage;
 
@@ -293,7 +297,14 @@ bool HitPlayer(int nDamage)
 		SetEffect(Player.pos, 0.3f, D3DXCOLOR(0.2f, 0.4f, 0.9f, 1.0f), 15.0f, 0.015f);
 
 		// スコアの減少
-		AddScore(-5000);
+		if (nScore < 5000)
+		{
+			AddScore(-nScore);
+		}
+		else
+		{
+			AddScore(-5000);
+		}
 
 		// 死亡ステータスへ
 		Player.state = PLAYERSTATE_DEATH;
@@ -332,35 +343,32 @@ bool HitPlayer(int nDamage)
 }
 
 //==============================================================================
-// 敵との接触
+// 壁との接触
 //==============================================================================
 void TouchBlock(void)
 {
 	// ローカル変数宣言
-	//ENEMY *pEnemy;
+	BLOCK *pBlock;
 
-	// 敵の取得
-	//pEnemy = GetEnemy();
+	// 壁の取得
+	pBlock = GetBlock();
 
 	// 敵との接触判定
-	//for (int nCnt = 0; nCnt < MAX_ENEMY; nCnt++, pEnemy++)
-	//{
-	//	if (pEnemy->bUse == true)
-	//	{
-	//		if (Player.pos.x + PLAYER_SIZEX >= pEnemy->pos.x - ENEMY_SIZEX &&
-	//			Player.pos.x - PLAYER_SIZEX <= pEnemy->pos.x + ENEMY_SIZEX &&
-	//			Player.pos.y - PLAYER_SIZEY <= pEnemy->pos.y + ENEMY_SIZEY &&
-	//			Player.pos.y + PLAYER_SIZEY >= pEnemy->pos.y - ENEMY_SIZEY &&
-	//			Player.state == PLAYERSTATE_NORMAL && pEnemy->nType != 5)
-	//		{
-	//			// 自機との接触処理(体力が1減少)
-	//			HitPlayer(1);
-
-	//			// スコアの減少
-	//			AddScore(-10000);
-	//		}
-	//	}
-	//}
+	for (int nCnt = 0; nCnt < BLOCK_MAX; nCnt++, pBlock++)
+	{
+		if (pBlock->bUse == true)
+		{
+			if (Player.pos.x + PLAYER_SIZEX >= pBlock->pos.x - BLOCK_SIZEX &&
+				Player.pos.x - PLAYER_SIZEX <= pBlock->pos.x + BLOCK_SIZEX &&
+				Player.pos.y - PLAYER_SIZEY <= pBlock->pos.y + BLOCK_SIZEY &&
+				Player.pos.y + PLAYER_SIZEY >= pBlock->pos.y - BLOCK_SIZEY &&
+				Player.state == PLAYERSTATE_NORMAL)
+			{
+				// 自機との接触処理(体力が1減少)
+				HitPlayer(1);
+			}
+		}
+	}
 }
 
 //==============================================================================
