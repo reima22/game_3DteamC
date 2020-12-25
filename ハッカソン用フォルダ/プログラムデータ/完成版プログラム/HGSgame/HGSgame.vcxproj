@@ -173,6 +173,7 @@
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="tutorial.cpp" />
+    <ClCompile Include="ui.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bg.h" />
@@ -194,6 +195,7 @@
     <ClInclude Include="timer.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="tutorial.h" />
+    <ClInclude Include="ui.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

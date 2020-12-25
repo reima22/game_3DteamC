@@ -18,6 +18,7 @@
 #include "block.h"
 #include "gamepad.h"
 #include "timer.h"
+#include "ui.h"
 #include "time.h"
 #include "stdlib.h"
 
@@ -64,6 +65,9 @@ HRESULT InitGame(void)
 	// エフェクトの初期化処理
 	InitParticle();
 
+	// UIの初期化処理
+	InitUI();
+
 	// タイマーの初期化処理
 	InitTimer();
 
@@ -108,6 +112,9 @@ void UninitGame(void)
 	// エフェクトの終了処理
 	UninitParticle();
 
+	// UIの終了処理
+	UninitUI();
+
 	// タイマーの終了処理
 	UninitTimer();
 
@@ -139,7 +146,7 @@ void UpdateGame(void)
 	fade = GetFade();
 
 	// ポーズメニューへ移行
-	//if (info.nStartCnt >= OPEN_CNT)
+	if (fade == FADE_NONE)
 	{
 		if (GetKeyboardTrigger(KEYINFO_PAUSE) == true || IsButtonDown(KEYINFO::KEYINFO_PAUSE) == true)
 		{
@@ -177,13 +184,10 @@ void UpdateGame(void)
 	}
 	else
 	{ // 非ポーズ時の処理
-		if (Player->state != PLAYERSTATE_GAMEOVER)
+		if (Player->state != PLAYERSTATE_GAMEOVER && nTimer > 0)
 		{ // ゲーム中の処理
 		  // 背景ポリゴンの更新処理
 			UpdateBg();
-
-			// ユーザーインターフェースの更新処理
-			//UpdateStock();
 
 			// 弾の更新処理
 			UpdateBullet();
@@ -203,6 +207,9 @@ void UpdateGame(void)
 
 			// エフェクトの更新処理
 			UpdateParticle();
+
+			// UIの更新処理
+			UpdateUI();
 
 			// タイマーの更新処理
 			UpdateTimer();
@@ -238,6 +245,9 @@ void DrawGame(void)
 
 	// エフェクトの更新処理
 	DrawParticle();
+
+	// UIの描画
+	DrawUI();
 
 	// タイマーの描画処理
 	DrawTimer();
