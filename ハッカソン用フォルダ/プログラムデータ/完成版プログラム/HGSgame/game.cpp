@@ -139,7 +139,7 @@ void UpdateGame(void)
 	fade = GetFade();
 
 	// ポーズメニューへ移行
-	//if (info.nStartCnt >= OPEN_CNT)
+	if (fade == FADE_NONE)
 	{
 		if (GetKeyboardTrigger(KEYINFO_PAUSE) == true || IsButtonDown(KEYINFO::KEYINFO_PAUSE) == true)
 		{

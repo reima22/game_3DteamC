@@ -8,6 +8,7 @@
 #include "input.h"
 #include "sound.h"
 #include "gamepad.h"
+#include "fade.h"
 
 //==============================================================================
 // マクロ定義
@@ -222,53 +223,58 @@ void UpdatePause(void)
 {
 	// ローカル変数宣言
 	VERTEX_2D *pVtx;
+	FADE fade = GetFade();
 
-	// ポーズからゲーム続行
-	if (GetKeyboardTrigger(KEYINFO_PAUSE) == true || IsButtonDown(KEYINFO::KEYINFO_PAUSE) == true)
+	if (fade == FADE_NONE)
 	{
-		if (PauseMenu != PAUSE_MENU_CONTINUE)
+		// ポーズからゲーム続行
+		if (GetKeyboardTrigger(KEYINFO_PAUSE) == true || IsButtonDown(KEYINFO::KEYINFO_PAUSE) == true)
 		{
-			PauseMenu = PAUSE_MENU_CONTINUE;
+			if (PauseMenu != PAUSE_MENU_CONTINUE)
+			{
+				PauseMenu = PAUSE_MENU_CONTINUE;
+			}
+		}
+
+		// 選択画面
+		if (GetKeyboardTrigger(KEYINFO_DOWN) == true || IsButtonDown(KEYINFO::KEYINFO_DOWN) == true)
+		{
+			// 音の再生
+			PlaySound(SOUND_LABEL_SE_SELECT);
+
+			if (PauseMenu == PAUSE_MENU_CONTINUE)
+			{ // カーソルが「CONTINUE」の時
+				PauseMenu = PAUSE_MENU_RETRY;
+			}
+			else if (PauseMenu == PAUSE_MENU_RETRY)
+			{ // カーソルが「RETRY」の時
+				PauseMenu = PAUSE_MENU_QUIT;
+			}
+			else if (PauseMenu == PAUSE_MENU_QUIT)
+			{ // カーソルが「QUIT」の時
+				PauseMenu = PAUSE_MENU_CONTINUE;
+			}
+		}
+		else if (GetKeyboardTrigger(KEYINFO_UP) == true || IsButtonDown(KEYINFO::KEYINFO_UP) == true)
+		{
+			// 音の再生
+			PlaySound(SOUND_LABEL_SE_SELECT);
+
+			if (PauseMenu == PAUSE_MENU_CONTINUE)
+			{ // カーソルが「CONTINUE」の時
+				PauseMenu = PAUSE_MENU_QUIT;
+			}
+			else if (PauseMenu == PAUSE_MENU_RETRY)
+			{ // カーソルが「RETRY」の時
+				PauseMenu = PAUSE_MENU_CONTINUE;
+			}
+			else if (PauseMenu == PAUSE_MENU_QUIT)
+			{ // カーソルが「QUIT」の時
+				PauseMenu = PAUSE_MENU_RETRY;
+			}
 		}
 	}
 
-	// 選択画面
-	if (GetKeyboardTrigger(KEYINFO_DOWN) == true || IsButtonDown(KEYINFO::KEYINFO_DOWN) == true)
-	{
-		// 音の再生
-		PlaySound(SOUND_LABEL_SE_SELECT);
-
-		if (PauseMenu == PAUSE_MENU_CONTINUE)
-		{ // カーソルが「CONTINUE」の時
-			PauseMenu = PAUSE_MENU_RETRY;
-		}
-		else if (PauseMenu == PAUSE_MENU_RETRY)
-		{ // カーソルが「RETRY」の時
-			PauseMenu = PAUSE_MENU_QUIT;
-		}
-		else if (PauseMenu == PAUSE_MENU_QUIT)
-		{ // カーソルが「QUIT」の時
-			PauseMenu = PAUSE_MENU_CONTINUE;
-		}
-	}
-	else if (GetKeyboardTrigger(KEYINFO_UP) == true || IsButtonDown(KEYINFO::KEYINFO_UP) == true)
-	{
-		// 音の再生
-		PlaySound(SOUND_LABEL_SE_SELECT);
-
-		if (PauseMenu == PAUSE_MENU_CONTINUE)
-		{ // カーソルが「CONTINUE」の時
-			PauseMenu = PAUSE_MENU_QUIT;
-		}
-		else if (PauseMenu == PAUSE_MENU_RETRY)
-		{ // カーソルが「RETRY」の時
-			PauseMenu = PAUSE_MENU_CONTINUE;
-		}
-		else if (PauseMenu == PAUSE_MENU_QUIT)
-		{ // カーソルが「QUIT」の時
-			PauseMenu = PAUSE_MENU_RETRY;
-		}
-	}
 
 	// テクスチャの切り替え
 	switch (PauseMenu)
