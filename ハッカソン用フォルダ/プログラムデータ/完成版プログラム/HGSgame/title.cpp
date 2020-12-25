@@ -73,6 +73,10 @@ HRESULT InitTitle(void)
 		g_aTitle[nCntTitle].bDisp = true;	
 		
 	}	
+
+	g_aTitle[1].size.x = 0.0f;
+	g_aTitle[1].size.y = 0.0f;
+
 	//テクスチャ設定
 	g_aTitle[0].TexType = 0;
 	g_aTitle[1].TexType = 1;
