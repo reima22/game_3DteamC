@@ -184,13 +184,10 @@ void UpdateGame(void)
 	}
 	else
 	{ // 非ポーズ時の処理
-		if (Player->state != PLAYERSTATE_GAMEOVER)
+		if (Player->state != PLAYERSTATE_GAMEOVER && nTimer > 0)
 		{ // ゲーム中の処理
 		  // 背景ポリゴンの更新処理
 			UpdateBg();
-
-			// ユーザーインターフェースの更新処理
-			//UpdateStock();
 
 			// 弾の更新処理
 			UpdateBullet();
