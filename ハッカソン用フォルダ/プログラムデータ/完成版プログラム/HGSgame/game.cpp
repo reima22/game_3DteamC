@@ -18,6 +18,7 @@
 #include "block.h"
 #include "gamepad.h"
 #include "timer.h"
+#include "ui.h"
 #include "time.h"
 #include "stdlib.h"
 
@@ -64,6 +65,9 @@ HRESULT InitGame(void)
 	// エフェクトの初期化処理
 	InitParticle();
 
+	// UIの初期化処理
+	InitUI();
+
 	// タイマーの初期化処理
 	InitTimer();
 
@@ -107,6 +111,9 @@ void UninitGame(void)
 
 	// エフェクトの終了処理
 	UninitParticle();
+
+	// UIの終了処理
+	UninitUI();
 
 	// タイマーの終了処理
 	UninitTimer();
@@ -204,6 +211,9 @@ void UpdateGame(void)
 			// エフェクトの更新処理
 			UpdateParticle();
 
+			// UIの更新処理
+			UpdateUI();
+
 			// タイマーの更新処理
 			UpdateTimer();
 
@@ -238,6 +248,9 @@ void DrawGame(void)
 
 	// エフェクトの更新処理
 	DrawParticle();
+
+	// UIの描画
+	DrawUI();
 
 	// タイマーの描画処理
 	DrawTimer();
