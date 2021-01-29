@@ -1,0 +1,9 @@
+﻿  player.cpp
+c:\users\student\documents\visual studio 2015\projects\3daction001\player.cpp(1395): warning C4101: 'aPartsData': ローカル変数は 1 度も使われていません。
+c:\users\student\documents\visual studio 2015\projects\3daction001\player.cpp(1396): warning C4101: 'nIdx': ローカル変数は 1 度も使われていません。
+c:\users\student\documents\visual studio 2015\projects\3daction001\player.cpp(1394): warning C4101: 'aCharaData': ローカル変数は 1 度も使われていません。
+c:\users\student\documents\visual studio 2015\projects\3daction001\player.cpp(1389): warning C4101: 'aBuffer': ローカル変数は 1 度も使われていません。
+c:\users\student\documents\visual studio 2015\projects\3daction001\player.cpp(1392): warning C4101: 'cEqual': ローカル変数は 1 度も使われていません。
+c:\users\student\documents\visual studio 2015\projects\3daction001\player.cpp(1391): warning C4101: 'aData': ローカル変数は 1 度も使われていません。
+  3DAction001.vcxproj -> C:\Users\student\Documents\Visual Studio 2015\Projects\3DAction001\3DAction001.exe
+  3DAction001.vcxproj -> C:\Users\student\Documents\Visual Studio 2015\Projects\3DAction001\3DAction001.pdb (Full PDB)
