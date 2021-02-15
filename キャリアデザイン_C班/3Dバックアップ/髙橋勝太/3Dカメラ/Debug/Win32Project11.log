@@ -1,4 +1,2 @@
-﻿  effect.cpp
-c:\users\student\desktop\3dカメラ\effect.cpp(141): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
-  Win32Project11.vcxproj -> C:\Users\student\Desktop\3Dカメラ\Debug\Win32Project11.exe
-  Win32Project11.vcxproj -> C:\Users\student\Desktop\3Dカメラ\Debug\Win32Project11.pdb (Full PDB)
+﻿  Win32Project11.vcxproj -> C:\Users\student\Desktop\game_3DteamC\キャリアデザイン_C班\3Dバックアップ\髙橋勝太\3Dカメラ\Debug\Win32Project11.exe
+  Win32Project11.vcxproj -> C:\Users\student\Desktop\game_3DteamC\キャリアデザイン_C班\3Dバックアップ\髙橋勝太\3Dカメラ\Debug\Win32Project11.pdb (Full PDB)
