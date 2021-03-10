@@ -28,6 +28,7 @@ MODEL_FILENAME = data/MODEL/gentleman/10_foot_R.x			# [10]右足
 MODEL_FILENAME = data/MODEL/gentleman/11_leg_top_L.x		# [11]左腿
 MODEL_FILENAME = data/MODEL/gentleman/12_leg_under_L.x		# [12]左下腿
 MODEL_FILENAME = data/MODEL/gentleman/13_foot_L.x			# [13]左足
+
 #------------------------------------------------------------------------------
 # キャラクター情報
 #------------------------------------------------------------------------------
