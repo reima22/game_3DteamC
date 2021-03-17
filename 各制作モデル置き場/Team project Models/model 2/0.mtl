@@ -1,0 +1,44 @@
+# Blender MTL File: 'MRL-279.blend'
+# Material Count: 3
+
+newmtl 25_body_0.3_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.693326 0.561387 0.439435
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Warrior (Android),Dark Avenger X\body_d.tga
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\body_n.tga
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\body_s.tga
+map_d D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\body_d.tga
+
+newmtl 25_face_0.3_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.427420 0.724123 0.688142
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Warrior (Android),Dark Avenger X\face_d.tga
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\face_n.tga
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\face_s.tga
+map_d D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\face_d.tga
+
+newmtl 25_shoulder_0.3_0_0
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.677769 0.449920 0.479397
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Kd D:\Dropbox\Shared Files\XPS\Warrior (Android),Dark Avenger X\shoulder_d.tga
+map_Bump D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\shoulder_n.tga
+map_Ks D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\shoulder_s.tga
+map_d D:\\Dropbox\\Shared Files\\XPS\\Warrior (Android),Dark Avenger X\\shoulder_d.tga
