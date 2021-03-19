@@ -1,0 +1,15 @@
+// XÉtÉ@ÉCÉãÇÃì«Ç›çûÇ›
+	D3DXLoadMeshFromX("data/MODEL/container.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[13], NULL, &g_nNumMatObject, &g_pMeshObject[13]);
+	D3DXLoadMeshFromX("data/MODEL/tree.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[12], NULL, &g_nNumMatObject, &g_pMeshObject[12]);
+	D3DXLoadMeshFromX("data/MODEL/stone2.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[11], NULL, &g_nNumMatObject, &g_pMeshObject[11]);
+	D3DXLoadMeshFromX("data/MODEL/stone.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[10], NULL, &g_nNumMatObject, &g_pMeshObject[10]);
+	D3DXLoadMeshFromX("data/MODEL/fence101.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[9], NULL, &g_nNumMatObject, &g_pMeshObject[9]);
+	D3DXLoadMeshFromX("data/MODEL/bench.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[8], NULL, &g_nNumMatObject, &g_pMeshObject[8]);
+	D3DXLoadMeshFromX("data/MODEL/tree000.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[7], NULL, &g_nNumMatObject, &g_pMeshObject[7]);
+	D3DXLoadMeshFromX("data/MODEL/glass000.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[6], NULL, &g_nNumMatObject, &g_pMeshObject[6]);
+	D3DXLoadMeshFromX("data/MODEL/building04.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[5], NULL, &g_nNumMatObject, &g_pMeshObject[5]);
+	D3DXLoadMeshFromX("data/MODEL/building03.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[4], NULL, &g_nNumMatObject, &g_pMeshObject[4]);
+	D3DXLoadMeshFromX("data/MODEL/tower000.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[3], NULL, &g_nNumMatObject, &g_pMeshObject[3]);
+	D3DXLoadMeshFromX("data/MODEL/ï¨êÖ.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[2], NULL, &g_nNumMatObject, &g_pMeshObject[2]);
+	D3DXLoadMeshFromX("data/MODEL/building00.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[1], NULL, &g_nNumMatObject, &g_pMeshObject[1]);
+	D3DXLoadMeshFromX("data/MODEL/baloon01.x", D3DXMESH_SYSTEMMEM, pDevice, NULL, &g_pBuffMatObject[0], NULL, &g_nNumMatObject, &g_pMeshObject[0]);
