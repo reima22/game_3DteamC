@@ -2,13 +2,13 @@ Metasequoia Document
 Format Text Ver 1.0
 
 Scene {
-	pos -774.2820 -1124.7743 15728.6514
+	pos 6.6591 -1929.5123 2400.0017
 	lookat 0.0000 0.0000 0.0000
 	head 6.3019
 	pich 0.0506
 	bank -0.0000
 	ortho 0
-	zoom2 0.4768
+	zoom2 3.1248
 	amb 0.250 0.250 0.250
 	dirlights 1 {
 		light {
@@ -22,7 +22,7 @@ Material 2 {
 	"21_body_1_0_0.001" col(0.576 0.445 0.454 1.000) dif(0.800) amb(0.600) emi(0.000) spc(0.000) power(5.00) tex("body_d.tga")
 }
 Object "Full part" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -9029,7 +9029,7 @@ Object "Full part" {
 	}
 }
 Object "right-hand" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -11295,7 +11295,7 @@ Object "right-hand" {
 	}
 }
 Object "left-hand" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -14385,7 +14385,7 @@ Object "head" {
 	}
 }
 Object "right-leg" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -15010,7 +15010,7 @@ Object "right-leg" {
 	}
 }
 Object "right-leg-2" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -15635,7 +15635,7 @@ Object "right-leg-2" {
 	}
 }
 Object "left-leg" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -16260,7 +16260,7 @@ Object "left-leg" {
 	}
 }
 Object "right-foot" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -17071,7 +17071,7 @@ Object "right-foot" {
 	}
 }
 Object "right-foot-2" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -17944,7 +17944,7 @@ Object "right-foot-2" {
 	}
 }
 Object "left-foot" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -18817,7 +18817,7 @@ Object "left-foot" {
 	}
 }
 Object "body" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -20968,7 +20968,7 @@ Object "body" {
 	}
 }
 Object "obj1" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -22552,7 +22552,7 @@ Object "obj1" {
 	}
 }
 Object "obj2" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -23251,7 +23251,7 @@ Object "obj2" {
 	}
 }
 Object "obj3" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
@@ -24835,7 +24835,7 @@ Object "obj3" {
 	}
 }
 Object "obj4" {
-	visible 15
+	visible 0
 	locking 0
 	shading 1
 	facet 59.5
