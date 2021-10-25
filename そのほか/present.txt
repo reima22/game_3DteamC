@@ -1,8 +1,0 @@
-for (int nCntMat = 0; nCntMat < (int)g_nNumMatStone; nCntMat++)
-{
-	if (pMat[nCntMat].pTextureFilename != NULL)
-	{
-		//テキスチャの読み込み
-		D3DXCreateTextureFromFile(pDevice, "data/TEXTURE/ダウンロード.jpg", &g_apTextureStone[0]);
-	}
-}
